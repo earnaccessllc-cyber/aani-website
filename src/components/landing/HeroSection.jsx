@@ -2,8 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 
+const HERO_POSTER =
+  "https://i.vimeocdn.com/video/2145554930-2cd9489ea8f030b745c4824b5e85c1aa86d76f39ca82104c961dd082397f09ee-d_1920x1080?region=us";
+
 export default function HeroSection() {
   const [muted, setMuted] = useState(true);
+  const [videoReady, setVideoReady] = useState(false);
   const iframeRef = useRef(null);
 
   const sendVimeoCommand = (command, value) => {
@@ -12,9 +16,10 @@ export default function HeroSection() {
     iframeRef.current.contentWindow.postMessage(msg, "https://player.vimeo.com");
   };
 
-  // Once iframe loads, set initial muted state
+  // Once iframe loads, set initial muted state and fade out the poster
   const handleIframeLoad = () => {
     sendVimeoCommand("setVolume", 0);
+    setVideoReady(true);
   };
 
   const toggleMute = () => {
@@ -27,6 +32,15 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-end md:items-center overflow-hidden">
       {/* Vimeo background video */}
       <div className="absolute inset-0 overflow-hidden">
+        {/* Poster frame: paints instantly while the Vimeo player loads behind it */}
+        <img
+          src={HERO_POSTER}
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+          style={{ opacity: videoReady ? 0 : 1 }}
+        />
         <div
           style={{
             position: "absolute",
@@ -38,11 +52,13 @@ export default function HeroSection() {
             height: "56.25vw",
             minHeight: "100%",
             pointerEvents: "none",
+            opacity: videoReady ? 1 : 0,
+            transition: "opacity 700ms ease",
           }}
         >
           <iframe
             ref={iframeRef}
-            src="https://player.vimeo.com/video/1182830579?h=tl&autoplay=1&loop=1&muted=1&playsinline=1&controls=0&api=1"
+            src="https://player.vimeo.com/video/1182830579?h=tl&background=1&dnt=1&playsinline=1&api=1"
             style={{ width: "100%", height: "100%", border: "none" }}
             allow="autoplay; fullscreen"
             title="AANI Hero Video"
