@@ -1,47 +1,46 @@
+import Stripe from "npm:stripe@17";
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
-import jwt from 'npm:jsonwebtoken@9.0.2';
 
 Deno.serve(async (req) => {
   try {
-    const WEBHOOK_PUBLIC_KEY = Deno.env.get("WIX_PAYMENTS_WEBHOOK_PUBLIC_KEY");
-    if (!WEBHOOK_PUBLIC_KEY) {
-      console.error("Missing WIX_PAYMENTS_WEBHOOK_PUBLIC_KEY");
-      return new Response("Missing public key", { status: 500 });
+    const STRIPE_SECRET_KEY = Deno.env.get("STRIPE_SECRET_KEY");
+    const STRIPE_WEBHOOK_SECRET = Deno.env.get("STRIPE_WEBHOOK_SECRET");
+    if (!STRIPE_SECRET_KEY || !STRIPE_WEBHOOK_SECRET) {
+      console.error("Missing STRIPE_SECRET_KEY or STRIPE_WEBHOOK_SECRET");
+      return new Response("Not configured", { status: 500 });
     }
 
-    const requestBody = await req.text();
+    const stripe = new Stripe(STRIPE_SECRET_KEY);
+    const signature = req.headers.get("stripe-signature");
+    const body = await req.text();
 
-    // Step 1: Verify JWT signature
-    let rawPayload;
+    let event;
     try {
-      rawPayload = jwt.verify(requestBody, WEBHOOK_PUBLIC_KEY, { algorithms: ["RS256"] });
+      event = await stripe.webhooks.constructEventAsync(body, signature, STRIPE_WEBHOOK_SECRET);
     } catch (err) {
-      console.error("JWT verification failed:", err.message);
+      console.error("Stripe signature verification failed:", err.message);
       return new Response("Invalid signature", { status: 401 });
     }
 
-    // Step 2 & 3: Double-nested JSON parse
-    const event = JSON.parse(rawPayload.data);
-    const eventData = JSON.parse(event.data);
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object;
 
-    if (event.eventType === "wix.ecom.v1.order_approved") {
-      const order = eventData.actionEvent.body.order;
+      const buyerEmail = session.customer_details?.email;
+      const firstName = session.customer_details?.name?.split(" ")[0] || "Valued Customer";
+      const total = session.amount_total; // in cents
+      const currency = session.currency || "usd";
+      const orderId = session.id;
 
-      const buyerEmail = order.buyerInfo?.email;
-      const contact = order.billingInfo?.contactDetails;
-      const firstName = contact?.firstName || "Valued Customer";
-      const itemName = order.lineItems?.[0]?.productName?.original || "Your order";
-      const total = order.priceSummary?.total?.amount;
-      const currency = order.currency || "USD";
-      const orderId = order.id;
+      const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 1 });
+      const itemName = lineItems.data[0]?.description || "Your order";
 
-      console.log(`Order approved: ${orderId} — ${buyerEmail}`);
+      console.log(`Order completed: ${orderId} — ${buyerEmail}`);
 
       if (buyerEmail) {
         const base44 = createClientFromRequest(req);
 
         const formattedTotal = total
-          ? new Intl.NumberFormat("en-US", { style: "currency", currency }).format(parseFloat(total))
+          ? new Intl.NumberFormat("en-US", { style: "currency", currency: currency.toUpperCase() }).format(total / 100)
           : "";
 
         await base44.asServiceRole.integrations.Core.SendEmail({

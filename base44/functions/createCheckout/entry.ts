@@ -1,49 +1,37 @@
+import Stripe from "npm:stripe@17";
+
 Deno.serve(async (req) => {
   try {
     const { name, price, colorway } = await req.json();
 
-    const WIX_API_KEY = Deno.env.get("WIX_PAYMENTS_API_KEY");
-    const WIX_SITE_ID = Deno.env.get("WIX_PAYMENTS_SITE_ID");
-
-    const origin = req.headers.get("Origin") || "https://base44.com";
-    const thankYouPageUrl = `${origin}/thank-you`;
-    const postFlowUrl = `${origin}/collection`;
-
-    const response = await fetch(
-      "https://www.wixapis.com/payments/platform/v1/checkout-sessions/construct",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": WIX_API_KEY,
-          "wix-site-id": WIX_SITE_ID,
-        },
-        body: JSON.stringify({
-          cart: {
-            items: [
-              {
-                name: colorway ? `${name} — ${colorway}` : name,
-                quantity: 1,
-                price: price.toFixed(2),
-              },
-            ],
-          },
-          callbackUrls: {
-            postFlowUrl,
-            thankYouPageUrl,
-          },
-        }),
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.error("Wix Payments error:", JSON.stringify(data));
-      return Response.json({ error: data.message || "Checkout creation failed" }, { status: response.status });
+    const STRIPE_SECRET_KEY = Deno.env.get("STRIPE_SECRET_KEY");
+    if (!STRIPE_SECRET_KEY) {
+      console.error("Missing STRIPE_SECRET_KEY");
+      return Response.json({ error: "Checkout is not configured" }, { status: 500 });
     }
 
-    return Response.json({ redirectUrl: data.checkoutSession.redirectUrl });
+    const stripe = new Stripe(STRIPE_SECRET_KEY);
+    const origin = req.headers.get("Origin") || "https://aanimetier.com";
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: colorway ? `${name} — ${colorway}` : name,
+            },
+            unit_amount: Math.round(price * 100),
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: `${origin}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/collection`,
+    });
+
+    return Response.json({ redirectUrl: session.url });
   } catch (error) {
     console.error("createCheckout error:", error.message);
     return Response.json({ error: error.message }, { status: 500 });
