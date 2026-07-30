@@ -59,7 +59,7 @@ export default function ConceptAccessory() {
             <div className="relative bg-card rounded-sm overflow-hidden">
               <div className="aspect-[4/3] md:aspect-[16/10]">
                 <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/7d67af26-93cb-4ee9-a870-c5b45c4df5ae.webp"
-                alt="AANI concept accessory - bio-based Trellara bag" className="w-full h-full object-cover" />
+                alt="AANI concept accessory - bio-based Trellara bag" className="w-full h-full object-cover" loading="lazy" decoding="async" />
 
 
               </div>

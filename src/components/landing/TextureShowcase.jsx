@@ -46,7 +46,7 @@ export default function TextureShowcase() {
             <div className="aspect-square overflow-hidden rounded-sm">
               <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/69cb2346-8bbb-4ef5-a90d-78ae17198235.webp"
 
-              alt="Close-up of Trellara hand-woven leather texture" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+              alt="Close-up of Trellara hand-woven leather texture" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" decoding="async" />
 
 
             </div>

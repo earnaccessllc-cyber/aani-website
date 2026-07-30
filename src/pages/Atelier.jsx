@@ -32,6 +32,8 @@ export default function Atelier() {
                 src="https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/b657718e-ce99-4757-a032-83b0e179b075.webp"
                 alt="The AANI Atelier"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </motion.div>

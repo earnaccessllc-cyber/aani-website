@@ -18,6 +18,8 @@ export default function LineCard({ line, index, onClick }) {
           style={{ transform: "scale(1)", transition: "transform 700ms ease" }}
           onMouseEnter={e => e.currentTarget.style.transform = "scale(1.03)"}
           onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500" />
       </div>

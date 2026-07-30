@@ -59,6 +59,8 @@ export default function BrandStory() {
               src={CRAFT_IMAGE}
               alt="Italian leather artisan at work in the atelier"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-foreground/5" />
           </div>

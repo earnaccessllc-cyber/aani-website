@@ -129,6 +129,7 @@ export default function ProductModal({ product: initialProduct, onClose, onUpdat
                     src={images[imgIndex]}
                     alt={product.name}
                     className="w-full h-full object-contain p-6 cursor-zoom-in"
+                    decoding="async"
                     onClick={() => setZoomed(true)} />
 
                     {images.length > 1 &&
@@ -166,7 +167,7 @@ export default function ProductModal({ product: initialProduct, onClose, onUpdat
                   onClick={() => {setImgIndex(i);setShowVideo(false);}}
                   className={`flex-shrink-0 w-14 h-14 rounded-sm overflow-hidden border-2 transition-colors ${i === imgIndex && !showVideo ? "border-foreground" : "border-transparent"}`}>
 
-                      <img src={img} alt="" className="w-full h-full object-cover" />
+                      <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                     </button>
                 )}
                   {videoUrl &&
