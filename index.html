@@ -2,13 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://base44.com/logo_v2.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="preconnect" href="https://player.vimeo.com" />
     <link rel="preconnect" href="https://i.vimeocdn.com" crossorigin />
     <link rel="preconnect" href="https://f.vimeocdn.com" />
-    <title>Base44 APP</title>
+
+    <!--
+      Static title-only fallback. Per-route title/description/canonical/OG
+      tags are set at runtime by src/components/SEO.jsx (react-helmet-async).
+
+      Deliberately NOT duplicating <meta name="description">, <link
+      rel="canonical">, or per-page <meta property="og:*"> tags here: this is
+      a client-rendered SPA, and react-helmet-async only ADDS its tags on
+      mount rather than replacing pre-existing static ones (it has no record
+      of tags it didn't render itself). Testing confirmed that shipping both
+      produced two <meta name="description"> and two <link rel="canonical">
+      elements on every inner route (the static one first in DOM order, the
+      correct per-page one appended after) — exactly the "duplicate
+      canonical tag" / conflicting-description problem Google's docs warn
+      against. Leaving only <title> here avoids that: a single <title>
+      element is always safely replaced (the DOM only allows one), so it's
+      a safe last-resort fallback for non-JS bots, while description/
+      canonical/OG are left solely to Helmet, which Googlebot picks up
+      correctly since it renders JS before indexing.
+    -->
+    <title>AANI | Hand-Woven Italian Leather Handbags & Clutches</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AANI" />
+    <meta name="twitter:card" content="summary" />
   </head>
   <body>
     <div id="root"></div>

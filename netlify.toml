@@ -2,7 +2,60 @@
   command = "npm run build"
   publish = "dist"
 
+[functions]
+  directory = "netlify/functions"
+
+# API endpoints (Stripe checkout). Declared explicitly and BEFORE the SPA
+# rules below so they can never be swallowed by the catch-all — the
+# functions also self-declare these paths via `export const config = {path}`,
+# this redirect is belt-and-suspenders so routing doesn't depend on that
+# implicit behavior alone.
+[[redirects]]
+  from = "/api/create-checkout"
+  to = "/.netlify/functions/create-checkout"
+  status = 200
+
+[[redirects]]
+  from = "/api/stripe-webhook"
+  to = "/.netlify/functions/stripe-webhook"
+  status = 200
+
+# Known client-side routes: served with a normal 200 so they're indexable.
+# List these BEFORE the catch-all so they match first.
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/collection"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/craft"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/vision"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/atelier"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/thank-you"
+  to = "/index.html"
+  status = 200
+
+# Anything else is genuinely not a page on this site: still serve the SPA
+# shell (so PageNotFound.jsx renders) but report a real 404 status, instead
+# of the previous catch-all that returned 200 for every unmatched URL.
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
+  status = 404
