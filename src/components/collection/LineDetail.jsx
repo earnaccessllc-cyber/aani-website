@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
-import { base44 } from "@/api/base44Client";
 
 export default function LineDetail({ line, onBack }) {
   const [selectedColorway, setSelectedColorway] = useState(
@@ -14,14 +13,21 @@ export default function LineDetail({ line, onBack }) {
   const handleBuyNow = async () => {
     setPurchasing(true);
     try {
-      const response = await base44.functions.invoke("createCheckout", {
-        name: line.name,
-        price: line.price,
-        colorway: selectedColorway.label,
+      const response = await fetch("/api/create-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: line.name,
+          price: line.price,
+          colorway: selectedColorway.label,
+        }),
       });
-      const url = response.data.redirectUrl;
-      const win = window.open(url, "_blank");
-      if (!win) window.location.href = url;
+      const data = await response.json();
+      if (!response.ok || !data.redirectUrl) {
+        throw new Error(data.error || "Checkout failed");
+      }
+      const win = window.open(data.redirectUrl, "_blank");
+      if (!win) window.location.href = data.redirectUrl;
     } catch (err) {
       console.error("Checkout failed:", err);
     } finally {
