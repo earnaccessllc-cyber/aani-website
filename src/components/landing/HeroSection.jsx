@@ -48,9 +48,12 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-end md:items-center overflow-hidden">
-      {/* Background video */}
-      <div className="absolute inset-0 overflow-hidden">
+    <section className="relative min-h-screen flex items-start md:items-center overflow-hidden">
+      {/* Background video. A 16:9 film cropped to fill a portrait phone shows
+          barely a quarter of its width, so on mobile it gets a band at the top
+          at its own scale and the copy sits beneath it; from md up the viewport
+          is wide enough for the original full-bleed treatment. */}
+      <div className="absolute inset-x-0 top-0 h-[50vh] md:h-full overflow-hidden">
         {/* Poster frame: paints instantly and stays underneath, so the video
             simply fades in on top of it with no transparent gap mid-fade. */}
         <img
@@ -74,11 +77,11 @@ export default function HeroSection() {
           style={{ opacity: videoReady ? 1 : 0, pointerEvents: "none" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" style={{ top: "80px" }} />
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" style={{ top: "80px" }} />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pb-20 md:pb-0 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full mt-[50vh] pt-8 pb-16 md:mt-0 md:pt-0 md:pb-0">
         <div className="max-w-xl">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -133,7 +136,7 @@ export default function HeroSection() {
       {/* Mute/Unmute button */}
       <button
         onClick={toggleMute}
-        className="absolute bottom-8 right-8 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm border border-foreground/20 text-foreground hover:bg-background/50 transition-all duration-300"
+        className="absolute right-6 top-[calc(50vh-4rem)] md:top-auto md:bottom-8 md:right-8 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm border border-foreground/20 text-foreground hover:bg-background/50 transition-all duration-300"
         aria-label={muted ? "Unmute" : "Mute"}
       >
         {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
