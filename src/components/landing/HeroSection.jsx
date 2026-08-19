@@ -2,69 +2,77 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 
-const HERO_POSTER =
-  "https://i.vimeocdn.com/video/2145554930-2cd9489ea8f030b745c4824b5e85c1aa86d76f39ca82104c961dd082397f09ee-d_1920x1080?region=us";
+// Self-hosted from /public. The source upload was HEVC in a QuickTime
+// container, which Chrome and Firefox refuse to decode; both files below are
+// H.264/AAC MP4 with the moov atom moved to the front (faststart) so playback
+// can begin before the whole file has downloaded.
+const HERO_VIDEO = "/hero.mp4";           // 1920x1080, ~3.7 MB
+const HERO_VIDEO_MOBILE = "/hero-mobile.mp4"; // 1280x720, ~1.8 MB
+const HERO_POSTER = "/hero-poster.jpg";
+
+// Phones get the 720p cut — at that viewport it's indistinguishable and saves
+// ~2 MB. Resolved once on mount rather than via <source media="...">, whose
+// support for picking between video sources is inconsistent across browsers.
+const pickSource = () =>
+  typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches
+    ? HERO_VIDEO_MOBILE
+    : HERO_VIDEO;
 
 export default function HeroSection() {
   const [muted, setMuted] = useState(true);
   const [videoReady, setVideoReady] = useState(false);
-  const iframeRef = useRef(null);
+  const [videoSrc] = useState(pickSource);
+  const videoRef = useRef(null);
 
-  const sendVimeoCommand = (command, value) => {
-    if (!iframeRef.current) return;
-    const msg = JSON.stringify({ method: command, value });
-    iframeRef.current.contentWindow.postMessage(msg, "https://player.vimeo.com");
-  };
-
-  // Once iframe loads, set initial muted state and fade out the poster
-  const handleIframeLoad = () => {
-    sendVimeoCommand("setVolume", 0);
-    setVideoReady(true);
-  };
+  // Autoplay only survives if the element is muted at the moment play() is
+  // called, so set the property directly instead of trusting the JSX prop.
+  // If the browser still blocks it, videoReady stays false and the poster
+  // remains as a static hero rather than leaving an empty frame.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    const played = video.play();
+    if (played) played.catch(() => {});
+  }, []);
 
   const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
     const nowMuted = !muted;
+    video.muted = nowMuted;
     setMuted(nowMuted);
-    sendVimeoCommand("setVolume", nowMuted ? 0 : 1);
+    // The click is a user gesture, so an unmuted play() is permitted here
+    // even if autoplay was previously blocked.
+    if (!nowMuted && video.paused) video.play().catch(() => {});
   };
 
   return (
     <section className="relative min-h-screen flex items-end md:items-center overflow-hidden">
-      {/* Vimeo background video */}
+      {/* Background video */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Poster frame: paints instantly while the Vimeo player loads behind it */}
+        {/* Poster frame: paints instantly and stays underneath, so the video
+            simply fades in on top of it with no transparent gap mid-fade. */}
         <img
           src={HERO_POSTER}
           alt=""
           fetchpriority="high"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-          style={{ opacity: videoReady ? 0 : 1 }}
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "177.78vh",
-            minWidth: "100%",
-            height: "56.25vw",
-            minHeight: "100%",
-            pointerEvents: "none",
-            opacity: videoReady ? 1 : 0,
-            transition: "opacity 700ms ease",
-          }}
-        >
-          <iframe
-            ref={iframeRef}
-            src="https://player.vimeo.com/video/1182830579?h=tl&background=1&dnt=1&playsinline=1&api=1"
-            style={{ width: "100%", height: "100%", border: "none" }}
-            allow="autoplay; fullscreen"
-            title="AANI Hero Video"
-            onLoad={handleIframeLoad}
-          />
-        </div>
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onPlaying={() => setVideoReady(true)}
+          aria-label="AANI Mêtier campaign film"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+          style={{ opacity: videoReady ? 1 : 0, pointerEvents: "none" }}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" style={{ top: "80px" }} />
       </div>
