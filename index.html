@@ -5,9 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="/manifest.json" />
-    <link rel="preconnect" href="https://player.vimeo.com" />
-    <link rel="preconnect" href="https://i.vimeocdn.com" crossorigin />
-    <link rel="preconnect" href="https://f.vimeocdn.com" />
+    <!-- Hero media is now self-hosted (was a Vimeo embed), so the Vimeo
+         preconnects are gone. The poster is the hero's first paint, so it's
+         preloaded at high priority. -->
+    <link rel="preload" as="image" href="/hero-poster.jpg" fetchpriority="high" />
 
     <!--
       Static title-only fallback. Per-route title/description/canonical/OG
