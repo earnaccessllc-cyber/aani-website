@@ -52,7 +52,10 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-start md:items-center overflow-hidden">
+    <section
+      className="relative min-h-screen flex flex-col md:flex-row md:items-center overflow-hidden"
+      style={{ minHeight: "100svh" }}
+    >
       {/* The film is portrait (1080x1342), so neither axis can be filled without
           throwing most of it away: stretched across a desktop viewport it loses
           half its height to an extreme close-up, and cropped into a phone it
@@ -60,8 +63,10 @@ export default function HeroSection() {
           on both — a band across the top on mobile with the copy beneath it, and
           the right half of the screen on desktop with the copy beside it. A half
           viewport is ~0.8 wide-to-tall against the film's 0.805, so desktop
-          crops essentially nothing. */}
-      <div className="absolute inset-x-0 top-0 h-[50vh] md:left-1/2 md:h-full overflow-hidden">
+          crops essentially nothing. On mobile the band is whatever height the
+          copy leaves rather than a fixed fraction, so the hero fits any phone
+          instead of running past the fold on short ones. */}
+      <div className="relative w-full flex-1 min-h-0 overflow-hidden md:absolute md:inset-y-0 md:left-1/2 md:right-0 md:w-auto md:flex-none">
         {/* Poster frame: paints instantly and stays underneath, so the video
             simply fades in on top of it with no transparent gap mid-fade. */}
         <img
@@ -86,10 +91,20 @@ export default function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" style={{ top: "80px" }} />
+
+        {/* Inside the media box so it rides the film rather than a fixed offset
+            that only matched one band height. */}
+        <button
+          onClick={toggleMute}
+          className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm border border-foreground/20 text-foreground hover:bg-background/50 transition-all duration-300"
+          aria-label={muted ? "Unmute" : "Mute"}
+        >
+          {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+        </button>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full mt-[50vh] pt-8 pb-16 md:mt-0 md:pt-0 md:pb-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full shrink-0 pt-6 pb-10 md:pt-0 md:pb-0">
         <div className="max-w-xl md:w-1/2 md:pr-10">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -140,15 +155,6 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
-
-      {/* Mute/Unmute button */}
-      <button
-        onClick={toggleMute}
-        className="absolute right-6 top-[calc(50vh-4rem)] md:top-auto md:bottom-8 md:right-8 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm border border-foreground/20 text-foreground hover:bg-background/50 transition-all duration-300"
-        aria-label={muted ? "Unmute" : "Mute"}
-      >
-        {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-      </button>
 
       {/* Scroll indicator */}
       <motion.div
