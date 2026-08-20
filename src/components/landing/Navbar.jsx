@@ -13,7 +13,6 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [pastHero, setPastHero] = useState(false);
   const { pathname } = useLocation();
   const isHome = pathname === "/";
 
@@ -22,26 +21,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // The hero film already carries the AANI Mêtier wordmark, so the header's
-  // own mark is redundant while the hero is on screen. It fades back in once
-  // the hero is scrolled past, and is never suppressed on other pages. Home is
-  // the one page where hiding it costs nothing anyway: its only link target is
-  // the page you are already on.
-  useEffect(() => {
-    if (!isHome) {
-      setPastHero(true);
-      return;
-    }
-    const check = () => setPastHero(window.scrollY > window.innerHeight * 0.9);
-    check();
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
-    return () => {
-      window.removeEventListener("scroll", check);
-      window.removeEventListener("resize", check);
-    };
-  }, [isHome]);
 
   return (
     <>
@@ -54,12 +33,15 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 md:h-20">
+          {/* Hidden rather than unmounted on the home page: this row is
+              justify-between, so dropping the mark would pull the nav links
+              over to the left. `invisible` also takes it out of the tab order
+              and the accessibility tree, so it isn't announced or focusable
+              where it can't be seen. Every other page keeps it. */}
           <Link
             to="/"
-            aria-hidden={!pastHero}
-            tabIndex={pastHero ? 0 : -1}
-            className={`font-serif text-2xl md:text-3xl font-light tracking-widest text-foreground drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] transition-opacity duration-500 ${
-              pastHero ? "opacity-100" : "opacity-0 pointer-events-none"
+            className={`font-serif text-2xl md:text-3xl font-light tracking-widest text-foreground drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] ${
+              isHome ? "invisible" : ""
             }`}
           >
             AANI

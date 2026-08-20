@@ -6,9 +6,13 @@ import { Volume2, VolumeX } from "lucide-react";
 // container, which Chrome and Firefox refuse to decode; both files below are
 // H.264/AAC MP4 with the moov atom moved to the front (faststart) so playback
 // can begin before the whole file has downloaded.
-const HERO_VIDEO = "/hero.mp4";           // 1920x1080, ~3.7 MB
-const HERO_VIDEO_MOBILE = "/hero-mobile.mp4"; // 1280x720, ~1.8 MB
-const HERO_POSTER = "/hero-poster.jpg";
+// Numbered because /public filenames aren't content-hashed the way Vite's
+// bundled assets are: they carry a week-long Cache-Control, so reusing a name
+// would leave returning visitors on the previous film. Bump the number when
+// the film is replaced.
+const HERO_VIDEO = "/hero-2.mp4";                // 1080x1342, ~4.4 MB
+const HERO_VIDEO_MOBILE = "/hero-2-mobile.mp4";  // 720x894, ~2.0 MB
+const HERO_POSTER = "/hero-2-poster.jpg";
 
 // Phones get the 720p cut — at that viewport it's indistinguishable and saves
 // ~2 MB. Resolved once on mount rather than via <source media="...">, whose
@@ -48,12 +52,21 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-start md:items-center overflow-hidden">
-      {/* Background video. A 16:9 film cropped to fill a portrait phone shows
-          barely a quarter of its width, so on mobile it gets a band at the top
-          at its own scale and the copy sits beneath it; from md up the viewport
-          is wide enough for the original full-bleed treatment. */}
-      <div className="absolute inset-x-0 top-0 h-[50vh] md:h-full overflow-hidden">
+    <section
+      className="relative min-h-screen flex flex-col md:flex-row md:items-center overflow-hidden"
+      style={{ minHeight: "100svh" }}
+    >
+      {/* The film is portrait (1080x1342), so neither axis can be filled without
+          throwing most of it away: stretched across a desktop viewport it loses
+          half its height to an extreme close-up, and cropped into a phone it
+          loses a third of its width. It therefore gets a shape close to its own
+          on both — a band across the top on mobile with the copy beneath it, and
+          the right half of the screen on desktop with the copy beside it. A half
+          viewport is ~0.8 wide-to-tall against the film's 0.805, so desktop
+          crops essentially nothing. On mobile the band is whatever height the
+          copy leaves rather than a fixed fraction, so the hero fits any phone
+          instead of running past the fold on short ones. */}
+      <div className="relative w-full flex-1 min-h-0 overflow-hidden md:absolute md:inset-y-0 md:left-1/2 md:right-0 md:w-auto md:flex-none">
         {/* Poster frame: paints instantly and stays underneath, so the video
             simply fades in on top of it with no transparent gap mid-fade. */}
         <img
@@ -78,11 +91,21 @@ export default function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" style={{ top: "80px" }} />
+
+        {/* Inside the media box so it rides the film rather than a fixed offset
+            that only matched one band height. */}
+        <button
+          onClick={toggleMute}
+          className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm border border-foreground/20 text-foreground hover:bg-background/50 transition-all duration-300"
+          aria-label={muted ? "Unmute" : "Mute"}
+        >
+          {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+        </button>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full mt-[50vh] pt-8 pb-16 md:mt-0 md:pt-0 md:pb-0">
-        <div className="max-w-xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full shrink-0 pt-6 pb-10 md:pt-0 md:pb-0">
+        <div className="max-w-xl md:w-1/2 md:pr-10">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -132,15 +155,6 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
-
-      {/* Mute/Unmute button */}
-      <button
-        onClick={toggleMute}
-        className="absolute right-6 top-[calc(50vh-4rem)] md:top-auto md:bottom-8 md:right-8 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm border border-foreground/20 text-foreground hover:bg-background/50 transition-all duration-300"
-        aria-label={muted ? "Unmute" : "Mute"}
-      >
-        {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-      </button>
 
       {/* Scroll indicator */}
       <motion.div

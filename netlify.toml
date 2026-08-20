@@ -5,23 +5,13 @@
 [functions]
   directory = "netlify/functions"
 
-# Hero media is self-hosted from /public, so the filenames are stable rather
-# than content-hashed the way Vite's bundled assets are. A week of caching
-# keeps repeat visits cheap without stranding a future swap behind a long TTL
-# — if one of these is replaced and needs to take effect immediately, rename
-# the file (and its reference in HeroSection.jsx) to bust the cache outright.
+# Hero media is self-hosted from /public, so the filenames are not
+# content-hashed the way Vite's bundled assets are. A week of caching keeps
+# repeat visits cheap; the filenames carry a version number instead, so
+# replacing the film means bumping that number (in HeroSection.jsx too) rather
+# than editing this rule. The splat covers every generation.
 [[headers]]
-  for = "/hero.mp4"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "/hero-mobile.mp4"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "/hero-poster.jpg"
+  for = "/hero-*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
