@@ -4,6 +4,7 @@ import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,6 +14,11 @@ const fadeUp = {
 export default function Atelier() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Atelier"
+        description="Inside the AANI atelier near Vicenza, Italy — a converted farmhouse in the Veneto where twelve artisans hand-weave every Trellara piece."
+        path="/atelier"
+      />
       <Navbar />
       <div className="pt-28 pb-20 max-w-7xl mx-auto px-6 md:px-12">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>

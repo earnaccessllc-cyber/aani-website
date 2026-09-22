@@ -7,12 +7,18 @@ import Footer from "@/components/landing/Footer";
 import LineCard from "@/components/collection/LineCard";
 import LineDetail from "@/components/collection/LineDetail";
 import { COLLECTION_LINES } from "@/lib/collectionData";
+import SEO from "@/components/SEO";
 
 export default function Collection() {
   const [selectedLine, setSelectedLine] = useState(null);
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="The Collection"
+        description="Explore the AANI capsule collection — hand-woven Trellara leather clutches and handbags, released in strictly limited monthly runs."
+        path="/collection"
+      />
       <Navbar />
 
       <AnimatePresence mode="wait">

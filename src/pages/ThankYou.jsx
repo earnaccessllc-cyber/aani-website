@@ -3,10 +3,17 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
+import SEO from "@/components/SEO";
 
 export default function ThankYou() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="Thank You"
+        description="Your AANI order has been received and is being prepared with care at our atelier in Veneto, Italy."
+        path="/thank-you"
+        noindex
+      />
       <Navbar />
       <main className="flex-1 flex items-center justify-center px-6">
         <motion.div
