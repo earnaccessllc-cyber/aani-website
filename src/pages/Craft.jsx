@@ -4,6 +4,7 @@ import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,6 +14,11 @@ const fadeUp = {
 export default function Craft() {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Craft"
+        description="Inside the making of a Trellara bag: how a single AANI artisan hand-weaves each piece from raw hide to finished object, with no assembly line."
+        path="/craft"
+      />
       <Navbar />
       <div className="pt-28 pb-20 max-w-7xl mx-auto px-6 md:px-12">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
