@@ -16,7 +16,7 @@ export default function Vision() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Vision"
-        description="AANI's vision for the future of leather craft: transparent sourcing, genuine natural leather, and pieces made to last a lifetime."
+        description="AANI's vision for the future of leather craft: Italian natural leather, and pieces made to last a lifetime."
         path="/vision"
       />
       <Navbar />
@@ -37,7 +37,7 @@ export default function Vision() {
               "Luxury should leave nothing behind — except the object itself."
             </motion.p>
             <motion.p variants={fadeUp} custom={1} className="font-sans text-sm leading-relaxed text-muted-foreground mb-6">
-              AANI was founded on a single conviction: that the most sophisticated thing a luxury house can do is take full responsibility for its materials. We source only from tanneries that publish full supply-chain transparency. We work exclusively in genuine, natural leather. We produce in strictly limited monthly runs — not as a marketing gesture, but because we believe scarcity should be earned, not manufactured.
+              AANI was founded on a single conviction: that the most sophisticated thing a luxury house can do is take full responsibility for its materials. We source our leather from Italian tanneries. We work exclusively in genuine, natural leather. We produce in strictly limited monthly runs — not as a marketing gesture, but because we believe scarcity should be earned, not manufactured.
             </motion.p>
             <motion.p variants={fadeUp} custom={2} className="font-sans text-sm leading-relaxed text-muted-foreground">
               Our vision is simple: honor the material. Natural leather, chosen with care and worked by hand, is one of the few materials that grows more beautiful with time. We make pieces meant to be carried for decades — and passed on.
@@ -48,9 +48,7 @@ export default function Vision() {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
           {[
             { label: "Monthly Production", value: "Limited Run", sub: "Never more than needed" },
-            { label: "Supply Chain", value: "Fully Transparent", sub: "Three partner tanneries, Tuscany" },
             { label: "Material", value: "Natural Leather", sub: "Genuine hides only — never synthetic" },
-            { label: "Carbon Offset", value: "100%", sub: "Verified annually, third-party audited" },
           ].map((stat, i) => (
             <motion.div key={stat.label} variants={fadeUp} custom={i} className="bg-background p-10">
               <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-2">{stat.label}</p>
