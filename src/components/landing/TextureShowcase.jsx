@@ -46,7 +46,7 @@ export default function TextureShowcase() {
             <div className="aspect-square overflow-hidden rounded-sm">
               <img src="/woven-clutch-closeup.jpg"
 
-              alt="Woven Trellara leather clutch held against a cognac leather coat" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" decoding="async" />
+              alt="Woven Trellara leather clutch held against a cognac leather coat" className="w-full h-full object-cover object-[50%_40%] hover:scale-105 transition-transform duration-1000" loading="lazy" decoding="async" />
 
 
             </div>
