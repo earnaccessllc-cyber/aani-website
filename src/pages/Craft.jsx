@@ -37,7 +37,7 @@ export default function Craft() {
               Each piece, one pair<br /><span className="italic">of hands</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="font-sans text-sm leading-relaxed text-muted-foreground">
-              In our Veneto atelier, every bag passes through the hands of a single artisan from the first cut to the final stitch. No assembly line. No division of labour. Just one craftsperson's unbroken attention — from raw hide to finished object.
+              In our Veneto atelier, every bag passes through the hands of a single artisan from the first cut to the final stitch. No assembly line. No division of labor. Just one craftsperson's unbroken attention — from raw hide to finished object.
             </motion.p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-7">
@@ -55,9 +55,9 @@ export default function Craft() {
 
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-border pt-16">
           {[
-            { step: "01", title: "Sourcing", text: "We work exclusively with three tanneries in Tuscany, each supplying a distinct character of hide — selected by hand, never by catalogue." },
-            { step: "02", title: "Weaving", text: "The Trellara weave requires cutting each strip to a precise width, then interlacing by hand. A single bag takes up to four hours of weaving alone." },
-            { step: "03", title: "Finishing", text: "Edges are hand-painted, not sealed. Hardware is set cold. The final piece rests for 48 hours before inspection — time is considered a material." },
+            { step: "01", title: "Selection", text: "Each hide is genuine, natural leather from Italian tanneries, chosen by hand for its character." },
+            { step: "02", title: "Weaving", text: "The Trellara weave requires cutting each strip to a precise width, then interlacing by hand. Depending on the style, a single piece takes 48 to 72 hours to weave." },
+            { step: "03", title: "Finishing", text: "Every piece is finished and inspected by hand before it leaves the atelier." },
           ].map((item, i) => (
             <motion.div key={item.step} variants={fadeUp} custom={i} className="relative pt-8">
               <span className="font-serif text-5xl font-light opacity-10 absolute top-0 left-0">{item.step}</span>

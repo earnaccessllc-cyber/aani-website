@@ -17,7 +17,7 @@ const ORGANIZATION_JSON_LD = {
     "AANI is a luxury leather goods house handcrafting the Trellara hand-woven leather clutch and handbag collection in a small atelier in Veneto, Italy.",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Manhattan",
+    addressLocality: "New York",
     addressRegion: "NY",
     addressCountry: "US",
   },
