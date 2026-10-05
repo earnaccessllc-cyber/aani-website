@@ -57,6 +57,12 @@ export default function Footer() {
             <div className="font-sans text-sm text-foreground/70">
               <a href="mailto:press@aanimetier.com" className="hover:text-foreground transition-colors">press@aanimetier.com</a>
             </div>
+            <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mt-6 mb-4">
+              Stockist Inquiries
+            </p>
+            <div className="font-sans text-sm text-foreground/70">
+              <a href="mailto:stockists@aanimetier.com" className="hover:text-foreground transition-colors">stockists@aanimetier.com</a>
+            </div>
           </div>
         </div>
 

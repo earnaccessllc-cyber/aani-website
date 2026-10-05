@@ -16,7 +16,7 @@ export default function Stockists() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Stockists"
-        description="Stockist and wholesale inquiries for AANI hand-woven Italian leather clutches and handbags."
+        description="Boutique stockist inquiries for AANI hand-woven Italian leather clutches and handbags."
         path="/stockists"
       />
       <Navbar />
@@ -39,16 +39,20 @@ export default function Stockists() {
             AANI is currently available directly through our atelier. We are selectively partnering with boutiques that share our appreciation for craft, material, and pieces made slowly by hand.
           </motion.p>
           <motion.p variants={fadeUp} custom={2} className="font-sans text-sm leading-relaxed text-muted-foreground mb-10">
-            For stockist and wholesale inquiries, please get in touch.
+            Boutiques interested in stocking AANI, please get in touch with our stockist team.
           </motion.p>
           <motion.a
             variants={fadeUp}
             custom={3}
-            href="mailto:contact@aanimetier.com?subject=Stockist%20Inquiry"
+            href="mailto:stockists@aanimetier.com?subject=Stockist%20Inquiry"
             className="inline-block font-sans text-xs tracking-widest uppercase border border-foreground/30 px-8 py-4 hover:bg-foreground hover:text-background transition-colors"
           >
-            contact@aanimetier.com
+            stockists@aanimetier.com
           </motion.a>
+          <motion.p variants={fadeUp} custom={4} className="font-sans text-sm leading-relaxed text-muted-foreground mt-12">
+            Customers with questions about a piece or an order, please contact{" "}
+            <a href="mailto:contact@aanimetier.com" className="text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity">contact@aanimetier.com</a>.
+          </motion.p>
         </motion.div>
       </div>
       <Footer />
