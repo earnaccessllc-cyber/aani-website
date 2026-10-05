@@ -242,7 +242,7 @@ export default function LineDetail({ line, onBack }) {
 
             {/* BNPL Options */}
             <div className="mt-4 flex flex-col gap-2 self-start w-full max-w-xs">
-              <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-1">Or pay in instalments with</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-1">Or pay in installments with</p>
               {/* Klarna */}
               <button onClick={handleBuyNow} disabled={purchasing} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
                 <span className="font-sans text-sm font-semibold text-foreground tracking-tight">Klarna</span>

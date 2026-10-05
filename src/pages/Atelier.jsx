@@ -16,7 +16,7 @@ export default function Atelier() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Atelier"
-        description="Inside the AANI atelier near Vicenza, Italy — a converted farmhouse in the Veneto where twelve artisans hand-weave every Trellara piece."
+        description="Inside the AANI atelier in the Veneto, Italy, where every Trellara piece is hand-woven by a single artisan."
         path="/atelier"
       />
       <Navbar />
@@ -44,15 +44,15 @@ export default function Atelier() {
             </motion.div>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-6">
-            <motion.p variants={fadeUp} custom={0} className="font-sans text-xs tracking-widest uppercase text-primary mb-3">Est. 2021</motion.p>
+            <motion.p variants={fadeUp} custom={0} className="font-sans text-xs tracking-widest uppercase text-primary mb-3">Veneto, Italy</motion.p>
             <motion.h2 variants={fadeUp} custom={1} className="font-serif text-3xl md:text-4xl font-light leading-tight mb-6">
-              A single room.<br /><span className="italic">Twelve artisans.</span>
+              Made slowly.<br /><span className="italic">Made by hand.</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={2} className="font-sans text-sm leading-relaxed text-muted-foreground mb-6">
-              Our atelier is located in a converted farmhouse outside Vicenza, in the heart of the Veneto — the same region that gave birth to the Trellara tradition. The space was chosen not for its address, but for its light: north-facing windows that provide an even, unwavering illumination for the detail work that defines our craft.
+              Every AANI piece is hand-woven in our atelier in the Veneto, in northern Italy. Each bag is made from start to finish by a single artisan — no assembly line, no shortcuts.
             </motion.p>
             <motion.p variants={fadeUp} custom={3} className="font-sans text-sm leading-relaxed text-muted-foreground">
-              Twelve artisans work here, each with more than a decade of experience in woven leather. They are not employees in the conventional sense — they are co-authors of every piece that leaves this building.
+              Depending on the style, a single piece takes between 48 and 72 hours of weaving. That time is not a cost we try to reduce — it is what makes each piece worth keeping.
             </motion.p>
           </motion.div>
         </div>

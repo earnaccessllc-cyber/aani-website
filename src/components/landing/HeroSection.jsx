@@ -85,7 +85,7 @@ export default function HeroSection() {
           playsInline
           preload="auto"
           onPlaying={() => setVideoReady(true)}
-          aria-label="AANI Mêtier campaign film"
+          aria-label="AANI Métier campaign film"
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
           style={{ opacity: videoReady ? 1 : 0, pointerEvents: "none" }}
         />

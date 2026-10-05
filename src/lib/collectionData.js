@@ -5,7 +5,7 @@ export const COLLECTION_LINES = [
     subtitle: "Woven Leather",
     material: "Hand-woven calfskin, trellara technique",
     description:
-      "Constructed entirely by hand using the signature trellara weaving technique, each portfolio clutch requires over six hours of meticulous work by a single artisan. The supple calfskin strips are woven without adhesives, creating a structure that is simultaneously architectural and yielding.",
+      "Constructed entirely by hand using the signature trellara weaving technique, each portfolio clutch requires between 48 and 72 hours of meticulous work by a single artisan. The supple calfskin strips are woven by hand, creating a structure that is simultaneously architectural and yielding.",
     price: 1850,
     heroImage:
       "https://media.base44.com/images/public/69d266ece83738de05c57bdb/9669d9ec3_hf_20260720_014021_1a9f0fca-a27d-4c9e-8045-df8ce839e3dd.png",
@@ -53,7 +53,7 @@ export const COLLECTION_LINES = [
     subtitle: "Smooth Leather",
     material: "Full-grain smooth calfskin",
     description:
-      "The Liscio presents the purest expression of the leather itself — full-grain calfskin selected for its natural grain and hand-finished to a subtle burnished lustre. Its clean lines and flush hardware allow the material to speak without interruption.",
+      "The Liscio presents the purest expression of the leather itself — full-grain calfskin selected for its natural grain and hand-finished to a subtle burnished luster. Its clean lines and flush hardware allow the material to speak without interruption.",
     price: 1850,
     heroImage:
       "https://media.base44.com/images/public/69d266ece83738de05c57bdb/ddbd6b694_hf_20260720_014711_04c05d1e-3474-433a-b9b6-fb4b66aecb7d.png",
