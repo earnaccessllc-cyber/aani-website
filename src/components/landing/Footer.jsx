@@ -28,6 +28,7 @@ export default function Footer() {
                 { label: "Craft", path: "/craft" },
                 { label: "Vision", path: "/vision" },
                 { label: "Atelier", path: "/atelier" },
+                { label: "Stockists", path: "/stockists" },
               ].map(({ label, path }) =>
               <Link
                 key={label}
