@@ -32,24 +32,13 @@ export default function Craft() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-start mb-24">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-5">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-8">
             <motion.h2 variants={fadeUp} custom={0} className="font-serif text-3xl md:text-4xl font-light leading-tight mb-6">
               Each piece, one pair<br /><span className="italic">of hands</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="font-sans text-sm leading-relaxed text-muted-foreground">
               In our atelier, every bag passes through the hands of a single artisan from the first cut to the final stitch. No assembly line. No division of labor. Just one craftsperson's unbroken attention — from raw hide to finished object.
             </motion.p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-7">
-            <motion.div variants={fadeUp} custom={0} className="aspect-[16/10] overflow-hidden rounded-sm bg-card">
-              <img
-                src="https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/b657718e-ce99-4757-a032-83b0e179b075.webp"
-                alt="Artisan at work"
-                className="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </motion.div>
           </motion.div>
         </div>
 
