@@ -40,7 +40,7 @@ export default function BrandStory() {
             className="md:col-span-7 md:pt-4"
           >
             <motion.p variants={fadeUp} custom={2} className="font-sans text-base md:text-lg leading-relaxed text-muted-foreground">
-              Created for the sophisticated, elegant woman with an appreciation for timeless style, this piece is a testament to the enduring beauty of intentional design. Every bag is meticulously handcrafted by master artisans, marrying the finest, carefully sourced leathers with substantial, premium hardware. In a deliberate stand against the environmental waste of mass production, AANI releases strictly limited quantities each month. This considered approach not only preserves the exclusivity of your piece but ensures that every stitch and fold receives the uncompromising attention it deserves, resulting in an heirloom-quality companion that is as conscious as it is captivating.
+              Created for the sophisticated woman with an appreciation for timeless style, every piece is a testament to intentional design. Each bag is handcrafted by master artisans from the finest Italian leather, finished with substantial, premium hardware. AANI releases strictly limited quantities each month — so every stitch receives the attention it deserves, and every piece remains an heirloom worth keeping.
             </motion.p>
           </motion.div>
         </div>
