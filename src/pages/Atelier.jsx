@@ -32,7 +32,6 @@ export default function Atelier() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-center mb-24">
-          </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-8">
             <motion.h2 variants={fadeUp} custom={1} className="font-serif text-3xl md:text-4xl font-light leading-tight mb-6">
               Made slowly.<br /><span className="italic">Made by hand.</span>
