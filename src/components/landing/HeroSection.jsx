@@ -119,11 +119,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-none tracking-tight text-foreground"
+            className="font-serif text-4xl md:text-6xl lg:text-7xl font-light leading-none tracking-tight text-foreground"
           >
-            Structured
+            Where minimalism
             <br />
-            <span className="italic font-light">Elegance</span>
+            <span className="italic font-light">meets maximalism</span>
           </motion.h1>
 
           <motion.div
@@ -134,7 +134,7 @@ export default function HeroSection() {
           >
             <div className="w-12 h-px bg-primary mb-6" />
             <p className="font-sans text-sm leading-relaxed text-muted-foreground max-w-sm">
-              Where centuries of Italian artisanship meet the restless pulse of the contemporary city.
+              Centuries of Italian artisanship meet the restless pulse of the contemporary city.
               A dialogue between stillness and stride.
             </p>
           </motion.div>
