@@ -10,7 +10,7 @@ const pillars = [
   {
     number: "02",
     title: "Genuine Leather",
-    text: "We work only with genuine, natural leather — never synthetic, never plant-derived substitutes. Carefully sourced and chosen for its character, it softens with use and develops a patina that is yours alone.",
+    text: "We work only with genuine, natural leather — never synthetic substitutes. Carefully sourced and chosen for its character, it softens with use and develops a patina that is yours alone.",
   },
   {
     number: "03",
