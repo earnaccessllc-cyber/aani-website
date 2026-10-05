@@ -100,10 +100,6 @@ export default function Footer() {
           <div className="flex items-center justify-center px-3 py-1.5 border border-border/60 rounded h-8 min-w-[72px] bg-black">
             <span className="font-sans font-semibold text-sm tracking-tight text-white">Apple Pay</span>
           </div>
-          {/* Venmo */}
-          <div className="flex items-center justify-center px-3 py-1.5 border border-border/60 rounded h-8 min-w-[64px]" style={{ backgroundColor: "#3D95CE" }}>
-            <span className="font-sans font-bold text-sm tracking-tight text-white">venmo</span>
-          </div>
         </div>
 
         {/* Bottom */}
