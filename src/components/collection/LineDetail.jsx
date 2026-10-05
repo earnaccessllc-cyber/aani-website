@@ -237,7 +237,7 @@ export default function LineDetail({ line, onBack }) {
               ) : (
                 <ShoppingBag className="w-3.5 h-3.5" />
               )}
-              {purchasing ? "Redirecting..." : "Buy Now"}
+              {purchasing ? "Redirecting..." : "Add to Bag"}
             </button>
 
             {/* BNPL Options */}

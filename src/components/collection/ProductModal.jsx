@@ -313,7 +313,7 @@ export default function ProductModal({ product: initialProduct, onClose, onUpdat
                 {!editing && product.in_stock !== false &&
                 <button className="w-full flex items-center justify-center gap-2 bg-foreground text-background font-sans text-xs tracking-widest uppercase py-3 hover:opacity-90 transition-opacity">
                     <ShoppingBag className="w-3.5 h-3.5" />
-                    Enquire to Purchase
+                    Add to Bag
                   </button>
                 }
                 {!editing && product.in_stock === false &&
