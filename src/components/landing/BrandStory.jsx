@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const CRAFT_IMAGE = "https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/f6862f69-c4c4-4cb5-aeff-dcd00d6a6efc.webp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -54,17 +53,21 @@ export default function BrandStory() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="mt-24 md:mt-32"
         >
-          <div className="relative aspect-video md:aspect-[21/9] overflow-hidden rounded-sm">
-            <img
-              src={CRAFT_IMAGE}
-              alt="Italian leather artisan at work in the atelier"
+          <div className="relative aspect-[4/5] max-w-md mx-auto overflow-hidden rounded-sm">
+            <video
+              src="/atelier-clutch.mp4"
+              poster="/atelier-clutch-poster.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Model carrying a woven Trellara leather clutch"
               className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
             />
             <div className="absolute inset-0 bg-foreground/5" />
           </div>
-          <p className="font-sans text-xs text-muted-foreground mt-4 tracking-wide">
+          <p className="font-sans text-xs text-muted-foreground mt-4 tracking-wide text-center">
             The Atelier — Veneto, Italy. Each weave completed by a single artisan from start to finish.
           </p>
         </motion.div>
