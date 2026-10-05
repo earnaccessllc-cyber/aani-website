@@ -53,17 +53,13 @@ export default function BrandStory() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="mt-24 md:mt-32"
         >
-          <div className="relative aspect-[4/5] max-w-md mx-auto overflow-hidden rounded-sm">
-            <video
-              src="/atelier-clutch.mp4"
-              poster="/atelier-clutch-poster.jpg"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Model carrying a woven Trellara leather clutch"
+          <div className="relative aspect-[3/4] max-w-md mx-auto overflow-hidden rounded-sm">
+            <img
+              src="/atelier-clutch.jpg"
+              alt="Model carrying a woven Trellara leather clutch"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-foreground/5" />
           </div>
