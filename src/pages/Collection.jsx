@@ -45,7 +45,7 @@ export default function Collection() {
                 <ArrowLeft className="w-3 h-3" /> Back
               </Link>
               <p className="font-sans text-xs tracking-widest uppercase text-primary mb-3">
-                Spring 2026
+                Autumn/Winter 2026
               </p>
               <h1 className="font-serif text-5xl md:text-6xl font-light leading-none">
                 The Collection
