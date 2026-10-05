@@ -64,7 +64,7 @@ export default function BrandStory() {
             <div className="absolute inset-0 bg-foreground/5" />
           </div>
           <p className="font-sans text-xs text-muted-foreground mt-4 tracking-wide text-center">
-            The Atelier — Veneto, Italy. Each weave completed by a single artisan from start to finish.
+            Every weave begins and ends in the hands of a single artisan.
           </p>
         </motion.div>
 
