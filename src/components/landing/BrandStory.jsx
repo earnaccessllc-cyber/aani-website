@@ -53,9 +53,9 @@ export default function BrandStory() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="mt-24 md:mt-32"
         >
-          <div className="relative aspect-[3/4] max-w-md mx-auto overflow-hidden rounded-sm">
+          <div className="relative aspect-[8/5] overflow-hidden rounded-sm">
             <img
-              src="/atelier-clutch.jpg"
+              src="/atelier-clutch-wall.jpg"
               alt="Model carrying a woven Trellara leather clutch"
               className="w-full h-full object-cover"
               loading="lazy"
