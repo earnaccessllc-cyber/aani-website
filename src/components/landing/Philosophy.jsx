@@ -9,8 +9,8 @@ const pillars = [
   },
   {
     number: "02",
-    title: "Living Materials",
-    text: "We partner with nature, not against it. Our bio-based leathers are cultivated from mycelium, dyed with plant-derived pigments, and finished with zero synthetic chemicals. Luxury that gives back.",
+    title: "Genuine Leather",
+    text: "We work only with genuine, natural leather — never synthetic, never plant-derived substitutes. Carefully sourced and chosen for its character, it softens with use and develops a patina that is yours alone.",
   },
   {
     number: "03",
