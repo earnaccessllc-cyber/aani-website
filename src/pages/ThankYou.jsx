@@ -10,7 +10,7 @@ export default function ThankYou() {
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
         title="Thank You"
-        description="Your AANI order has been received and is being prepared with care at our atelier in Veneto, Italy."
+        description="Your AANI order has been received and is being prepared with care at our atelier."
         path="/thank-you"
         noindex
       />

@@ -95,31 +95,4 @@ export const COLLECTION_LINES = [
       },
     ],
   },
-  {
-    id: "raffia",
-    name: "The Raffia Clutch",
-    subtitle: "Raffia & Leather",
-    material: "Natural raffia with calfskin trim",
-    description:
-      "Woven from sustainably sourced natural raffia and trimmed with hand-dyed calfskin, the Raffia Clutch is a study in contrast — the organic texture of the weave set against the precision of its leather framework. Each piece carries the subtle variation inherent to natural materials.",
-    price: 1850,
-    heroImage:
-      "https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/a25b896c-02bd-46b8-adc1-6d0780860e7d.webp",
-    colorways: [
-      {
-        id: "espresso",
-        label: "Espresso",
-        swatch: "#5D3A2E",
-        front: "https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/a25b896c-02bd-46b8-adc1-6d0780860e7d.webp",
-        back:  "https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/0cba8514-89f3-47f3-9ccc-53fb7d02df63.webp",
-      },
-      {
-        id: "noir",
-        label: "Noir",
-        swatch: "#1D1D1D",
-        front: "https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/bcde7cec-dc85-4859-9361-09574aa2706c.webp",
-        back:  "https://d2ol7oe51mr4n9.cloudfront.net/user_3C62qrQi47uC0x8MHK3Z72TkiY5/39f5806e-9cc9-4d89-8f4e-5353d16f5c65.webp",
-      },
-    ],
-  },
 ];
