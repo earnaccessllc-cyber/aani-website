@@ -177,7 +177,7 @@ export default function LineDetail({ line, onBack }) {
           {/* Right — details */}
           <div className="flex flex-col justify-center pt-4 md:pt-0">
             <p className="font-sans text-xs tracking-widest uppercase text-primary mb-3">
-              Spring 2026
+              Autumn/Winter 2026
             </p>
             <h1 className="font-serif text-4xl md:text-5xl font-light leading-none mb-2">
               {line.name}

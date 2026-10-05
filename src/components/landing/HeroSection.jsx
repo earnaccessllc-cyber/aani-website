@@ -112,7 +112,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-4"
           >
-            Capsule Collection — Spring 2026
+            Capsule Collection — Autumn/Winter 2026
           </motion.p>
 
           <motion.h1
