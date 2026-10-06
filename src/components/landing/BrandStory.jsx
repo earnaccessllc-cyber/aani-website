@@ -40,7 +40,7 @@ export default function BrandStory() {
             className="md:col-span-7 md:pt-4"
           >
             <motion.p variants={fadeUp} custom={2} className="font-sans text-base md:text-lg leading-relaxed text-muted-foreground">
-              Created for the sophisticated woman with an appreciation for timeless style, every piece is a testament to intentional design. Each bag is handcrafted by master artisans from the finest Italian leather, finished with substantial, premium hardware. AANI releases strictly limited quantities each month — so every stitch receives the attention it deserves, and every piece remains an heirloom worth keeping.
+              Created for the sophisticated woman with an appreciation for timeless style, every piece is a testament to intentional design. Each bag is made by hand by master artisans from the finest Italian leather, finished with substantial, premium hardware. AANI releases strictly limited quantities each month — so every stitch receives the attention it deserves, and every piece remains an heirloom worth keeping.
             </motion.p>
           </motion.div>
         </div>
@@ -77,7 +77,7 @@ export default function BrandStory() {
         >
           <motion.div variants={fadeUp} custom={0} className="w-8 h-px bg-primary mx-auto mb-8" />
           <motion.blockquote variants={fadeUp} custom={1} className="font-serif text-2xl md:text-3xl lg:text-4xl font-light italic leading-relaxed text-foreground">
-            "Craft is not nostalgia. It is the future, practiced slowly."
+            "Luxury is not excess. It is time, given slowly."
           </motion.blockquote>
           <motion.p variants={fadeUp} custom={2} className="font-sans text-xs tracking-widest uppercase text-muted-foreground mt-6">
             — AANI Creative Direction

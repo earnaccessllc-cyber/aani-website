@@ -36,7 +36,7 @@ export default function Stockists() {
             Become a<br /><span className="italic">stockist</span>
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} className="font-sans text-sm leading-relaxed text-muted-foreground mb-6">
-            AANI is currently available directly through our atelier. We are selectively partnering with boutiques that share our appreciation for craft, material, and pieces made slowly by hand.
+            AANI is currently available directly through our atelier. We are selectively partnering with boutiques that share our appreciation for artistry, material, and pieces made slowly by hand.
           </motion.p>
           <motion.p variants={fadeUp} custom={2} className="font-sans text-sm leading-relaxed text-muted-foreground mb-10">
             Boutiques interested in stocking AANI, please get in touch with our stockist team.

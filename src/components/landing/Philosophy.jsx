@@ -15,7 +15,7 @@ const pillars = [
   {
     number: "03",
     title: "The Artisan's Time",
-    text: "Each piece carries the unbroken attention of a single craftsperson. We measure quality not in minutes saved, but in hours given — the quiet accumulation of care made tangible.",
+    text: "Each piece carries the unbroken attention of a single artisan. We measure quality not in minutes saved, but in hours given — the quiet accumulation of care made tangible.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function Philosophy() {
           <motion.h2 variants={fadeUp} custom={1} className="font-serif text-4xl md:text-5xl font-light leading-tight">
             Three pillars of
             <br />
-            <span className="italic">quiet craft</span>
+            <span className="italic">quiet luxury</span>
           </motion.h2>
         </motion.div>
 

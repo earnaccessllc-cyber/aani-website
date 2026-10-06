@@ -14,7 +14,7 @@ const ORGANIZATION_JSON_LD = {
   url: SITE_URL,
   logo: `${SITE_URL}/aani-logo.png`,
   description:
-    "AANI is a luxury leather goods house handcrafting the Trellara hand-woven leather clutch and handbag collection.",
+    "AANI is a luxury leather goods house hand-weaving the Trellara hand-woven leather clutch and handbag collection.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "New York",
@@ -35,7 +35,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <SEO
         title="AANI | Hand-Woven Italian Leather Handbags & Clutches"
-        description="Hand-woven Italian leather clutches and handbags, each crafted by a single artisan from first cut to final stitch."
+        description="Hand-woven Italian leather clutches and handbags, each made by a single artisan from first cut to final stitch."
         path="/"
         jsonLd={[ORGANIZATION_JSON_LD, WEBSITE_JSON_LD]}
       />
