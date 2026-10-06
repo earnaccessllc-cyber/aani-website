@@ -10,7 +10,7 @@ const pillars = [
   {
     number: "02",
     title: "Premium Leather",
-    text: "We work only with premium, natural leather — never synthetic substitutes. Carefully sourced and chosen for its character, it softens with use and develops a patina that is yours alone.",
+    text: "We work only with premium, natural leather. Carefully sourced and chosen for its character, it softens with use and develops a patina that is yours alone.",
   },
   {
     number: "03",

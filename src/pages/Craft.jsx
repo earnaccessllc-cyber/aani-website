@@ -87,7 +87,7 @@ export default function Craft() {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
           {[
             { label: "Monthly Production", value: "Limited Run", sub: "Never more than needed" },
-            { label: "Material", value: "Natural Leather", sub: "Premium hides only — never synthetic" },
+            { label: "Material", value: "Natural Leather", sub: "Premium hides, chosen by hand" },
           ].map((stat, i) => (
             <motion.div key={stat.label} variants={fadeUp} custom={i} className="bg-background p-10">
               <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-2">{stat.label}</p>
