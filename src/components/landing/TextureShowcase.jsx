@@ -60,7 +60,7 @@ export default function TextureShowcase() {
             viewport={{ once: true, margin: "-80px" }}>
 
             <motion.p variants={fadeUp} custom={0} className="font-sans text-xs tracking-widest uppercase text-primary mb-3">
-              The Craft
+              The Material
             </motion.p>
             <motion.h2 variants={fadeUp} custom={1} className="font-serif text-3xl md:text-4xl font-light leading-tight text-foreground mb-4">
               The language

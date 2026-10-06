@@ -105,7 +105,7 @@ export default function Footer() {
             © 2026 AANI. All rights reserved.
           </p>
           <p className="font-sans text-xs text-muted-foreground/40 tracking-wider">
-            Crafted with intention
+            Made with intention
           </p>
         </div>
       </div>
