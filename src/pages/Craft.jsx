@@ -16,7 +16,7 @@ export default function Craft() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Métier"
-        description="Inside the making of a Trellara bag: how a single AANI artisan hand-weaves each piece from raw hide to finished object, with no assembly line."
+        description="Inside the making of an AANI bag: how a single artisan makes each piece by hand, from raw hide to finished object, with no assembly line."
         path="/metier"
       />
       <Navbar />
@@ -56,7 +56,7 @@ export default function Craft() {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-border pt-16">
           {[
             { step: "01", title: "Selection", text: "Each hide is genuine, natural leather from Italian tanneries, chosen by hand for its character." },
-            { step: "02", title: "Weaving", text: "The Trellara weave requires cutting each strip to a precise width, then interlacing by hand. Depending on the style, a single piece takes 48 to 72 hours to weave." },
+            { step: "02", title: "Weaving", text: "For our woven styles, the Trellara weave requires cutting each strip to a precise width, then interlacing by hand. Depending on the style, a single piece takes 48 to 72 hours to weave." },
             { step: "03", title: "Finishing", text: "Every piece is finished and inspected by hand before it leaves the atelier." },
           ].map((item, i) => (
             <motion.div key={item.step} variants={fadeUp} custom={i} className="relative pt-8">

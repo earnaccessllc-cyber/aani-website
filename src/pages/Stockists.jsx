@@ -16,7 +16,7 @@ export default function Stockists() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Stockists"
-        description="Boutique stockist inquiries for AANI hand-woven Italian leather clutches and handbags."
+        description="Boutique stockist inquiries for AANI Italian leather clutches and handbags."
         path="/stockists"
       />
       <Navbar />

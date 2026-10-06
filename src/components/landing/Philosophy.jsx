@@ -5,7 +5,7 @@ const pillars = [
   {
     number: "01",
     title: "Invisible Identity",
-    text: "In an age of over-signification, we chose silence. No logo adorns our surfaces — yet the hand knows. The eye knows. The Trellara weave is our signature, written in texture rather than type.",
+    text: "In an age of over-signification, we chose silence. No logo adorns our surfaces — yet the hand knows. The eye knows. Our signature is written in shape, texture, and finish rather than type.",
   },
   {
     number: "02",

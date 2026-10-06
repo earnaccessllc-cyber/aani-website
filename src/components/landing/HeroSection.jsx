@@ -134,8 +134,8 @@ export default function HeroSection() {
           >
             <div className="w-12 h-px bg-primary mb-6" />
             <p className="font-sans text-sm leading-relaxed text-muted-foreground max-w-sm">
-              Quiet in form, bold in feeling. Clean, restrained lines hold a weave rich with
-              texture — a piece that whispers and commands all at once.
+              Quiet in form, bold in feeling. Every AANI piece pairs clean, restrained lines
+              with an unmistakable presence — understated at first glance, unforgettable up close.
             </p>
           </motion.div>
 

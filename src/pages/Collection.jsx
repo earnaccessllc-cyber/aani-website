@@ -16,7 +16,7 @@ export default function Collection() {
     <div className="min-h-screen bg-background">
       <SEO
         title="The Collection"
-        description="Explore the AANI capsule collection — hand-woven Trellara leather clutches and handbags, released in strictly limited monthly runs."
+        description="Explore the AANI capsule collection — Italian leather clutches and handbags, woven and smooth, released in strictly limited monthly runs."
         path="/collection"
       />
       <Navbar />

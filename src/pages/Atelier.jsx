@@ -16,7 +16,7 @@ export default function Atelier() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Atelier"
-        description="Inside the AANI atelier, where every Trellara piece is hand-woven by a single artisan."
+        description="Inside the AANI atelier, where every piece is made by hand by a single artisan."
         path="/atelier"
       />
       <Navbar />
@@ -37,10 +37,10 @@ export default function Atelier() {
               Made slowly.<br /><span className="italic">Made by hand.</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={2} className="font-sans text-sm leading-relaxed text-muted-foreground mb-6">
-              Every AANI piece is hand-woven in our atelier from genuine Italian leather. Each bag is made from start to finish by a single artisan — no assembly line, no shortcuts.
+              Every AANI piece is made by hand in our atelier from genuine Italian leather. Each bag is made from start to finish by a single artisan — no assembly line, no shortcuts.
             </motion.p>
             <motion.p variants={fadeUp} custom={3} className="font-sans text-sm leading-relaxed text-muted-foreground">
-              Depending on the style, a single piece takes between 48 and 72 hours of weaving. That time is not a cost we try to reduce — it is what makes each piece worth keeping.
+              For our woven Trellara styles, a single piece takes between 48 and 72 hours of weaving. That time is not a cost we try to reduce — it is what makes each piece worth keeping.
             </motion.p>
           </motion.div>
         </div>
