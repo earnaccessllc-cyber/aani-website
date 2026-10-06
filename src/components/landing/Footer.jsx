@@ -26,7 +26,6 @@ export default function Footer() {
               {[
                 { label: "Collection", path: "/collection" },
                 { label: "Métier", path: "/metier" },
-                { label: "Vision", path: "/vision" },
                 { label: "Atelier", path: "/atelier" },
                 { label: "Stockists", path: "/stockists" },
               ].map(({ label, path }) =>
