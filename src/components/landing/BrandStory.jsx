@@ -27,9 +27,9 @@ export default function BrandStory() {
               The Narrative
             </motion.p>
             <motion.h2 variants={fadeUp} custom={1} className="font-serif text-4xl md:text-5xl font-light leading-tight text-foreground">
-              Between stillness
+              Less in line,
               <br />
-              <span className="italic">and stride</span>
+              <span className="italic">more in feeling</span>
             </motion.h2>
           </motion.div>
 
@@ -40,7 +40,7 @@ export default function BrandStory() {
             className="md:col-span-7 md:pt-4"
           >
             <motion.p variants={fadeUp} custom={2} className="font-sans text-base md:text-lg leading-relaxed text-muted-foreground">
-              Created for the sophisticated woman with an appreciation for timeless style, every piece is a testament to intentional design. Each bag is made by hand by master artisans from the finest Italian leather, finished with substantial, premium hardware. AANI releases strictly limited quantities each month — so every stitch receives the attention it deserves, and every piece remains an heirloom worth keeping.
+              AANI lives in the space between restraint and boldness. Our silhouettes are pared back — clean lines, no logos, nothing extra — yet every piece carries a richness you feel the moment you hold it: deep color, substantial leather, premium hardware, a presence that fills the room without raising its voice. Made by hand by master artisans from the finest Italian leather and released in strictly limited quantities each month, it is for the woman who refuses to choose between quiet and unforgettable.
             </motion.p>
           </motion.div>
         </div>
