@@ -53,7 +53,7 @@ export const COLLECTION_LINES = [
     subtitle: "Smooth Leather",
     material: "Full-grain smooth calfskin",
     description:
-      "The Liscio presents the purest expression of the leather itself — full-grain calfskin selected for its natural grain and hand-finished to a subtle burnished luster. Its clean lines and flush hardware allow the material to speak without interruption.",
+      "The Liscio presents the purest expression of the leather itself — full-grain calfskin selected for its natural grain and hand-finished to a subtle burnished luster. Its clean lines and oversized leather-covered dome button allow the material to speak without interruption.",
     price: 1850,
     heroImage:
       "https://media.base44.com/images/public/69d266ece83738de05c57bdb/ddbd6b694_hf_20260720_014711_04c05d1e-3474-433a-b9b6-fb4b66aecb7d.png",
