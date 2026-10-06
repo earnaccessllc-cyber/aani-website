@@ -9,7 +9,6 @@ import PageNotFound from './lib/PageNotFound';
 const Home = lazy(() => import('./pages/Home'));
 const Collection = lazy(() => import('./pages/Collection.jsx'));
 const Craft = lazy(() => import('./pages/Craft'));
-const Vision = lazy(() => import('./pages/Vision'));
 const Atelier = lazy(() => import('./pages/Atelier'));
 const ThankYou = lazy(() => import('./pages/ThankYou'));
 const Stockists = lazy(() => import('./pages/Stockists'));
@@ -33,7 +32,7 @@ function App() {
               <Route path="/collection" element={<Collection />} />
               <Route path="/metier" element={<Craft />} />
               <Route path="/craft" element={<Craft />} />
-              <Route path="/vision" element={<Vision />} />
+              <Route path="/vision" element={<Craft />} />
               <Route path="/atelier" element={<Atelier />} />
               <Route path="/stockists" element={<Stockists />} />
               <Route path="/thank-you" element={<ThankYou />} />

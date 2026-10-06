@@ -66,6 +66,36 @@ export default function Craft() {
             </motion.div>
           ))}
         </motion.div>
+
+        <div className="mt-24 md:mt-32 border-t border-border pt-16 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 mb-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-5">
+            <motion.p variants={fadeUp} custom={0} className="font-sans text-xs tracking-widest uppercase text-primary mb-3">Our Vision</motion.p>
+            <motion.p variants={fadeUp} custom={1} className="font-serif text-2xl md:text-3xl font-light italic leading-relaxed text-foreground">
+              "True luxury is something you never have to replace."
+            </motion.p>
+          </motion.div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-7">
+            <motion.p variants={fadeUp} custom={1} className="font-sans text-sm leading-relaxed text-muted-foreground mb-6">
+              AANI was founded on a single conviction: that the most sophisticated thing a luxury house can do is take full responsibility for its materials. We produce in strictly limited monthly runs — not as a marketing gesture, but because we believe scarcity should be earned, not manufactured.
+            </motion.p>
+            <motion.p variants={fadeUp} custom={2} className="font-sans text-sm leading-relaxed text-muted-foreground">
+              Our vision is simple: honor the material. Natural leather, chosen with care and worked by hand, is one of the few materials that grows more beautiful with time. We make pieces meant to be carried for decades — and passed on.
+            </motion.p>
+          </motion.div>
+        </div>
+
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
+          {[
+            { label: "Monthly Production", value: "Limited Run", sub: "Never more than needed" },
+            { label: "Material", value: "Natural Leather", sub: "Genuine hides only — never synthetic" },
+          ].map((stat, i) => (
+            <motion.div key={stat.label} variants={fadeUp} custom={i} className="bg-background p-10">
+              <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-2">{stat.label}</p>
+              <p className="font-serif text-3xl font-light text-foreground mb-1">{stat.value}</p>
+              <p className="font-sans text-xs text-muted-foreground/60">{stat.sub}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
       <Footer />
     </div>
