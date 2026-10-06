@@ -15,9 +15,9 @@ export default function Craft() {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Craft"
+        title="Métier"
         description="Inside the making of a Trellara bag: how a single AANI artisan hand-weaves each piece from raw hide to finished object, with no assembly line."
-        path="/craft"
+        path="/metier"
       />
       <Navbar />
       <div className="pt-28 pb-20 max-w-7xl mx-auto px-6 md:px-12">
@@ -27,7 +27,7 @@ export default function Craft() {
           </Link>
           <p className="font-sans text-xs tracking-widest uppercase text-primary mb-3">The Making</p>
           <h1 className="font-serif text-5xl md:text-6xl font-light leading-none mb-16">
-            Craft
+            Métier
           </h1>
         </motion.div>
 
