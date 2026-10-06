@@ -25,7 +25,7 @@ export default function Footer() {
             <div className="space-y-3">
               {[
                 { label: "Collection", path: "/collection" },
-                { label: "Craft", path: "/craft" },
+                { label: "Métier", path: "/metier" },
                 { label: "Vision", path: "/vision" },
                 { label: "Atelier", path: "/atelier" },
                 { label: "Stockists", path: "/stockists" },
