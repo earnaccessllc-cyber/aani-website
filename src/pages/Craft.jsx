@@ -55,7 +55,7 @@ export default function Craft() {
 
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-border pt-16">
           {[
-            { step: "01", title: "Selection", text: "Each hide is genuine, natural leather from Italian tanneries, chosen by hand for its character." },
+            { step: "01", title: "Selection", text: "Each hide is premium, natural leather from Italian tanneries, chosen by hand for its character." },
             { step: "02", title: "Weaving", text: "For our woven styles, the Trellara weave requires cutting each strip to a precise width, then interlacing by hand. Depending on the style, a single piece takes 48 to 72 hours to weave." },
             { step: "03", title: "Finishing", text: "Every piece is finished and inspected by hand before it leaves the atelier." },
           ].map((item, i) => (
@@ -87,7 +87,7 @@ export default function Craft() {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
           {[
             { label: "Monthly Production", value: "Limited Run", sub: "Never more than needed" },
-            { label: "Material", value: "Natural Leather", sub: "Genuine hides only — never synthetic" },
+            { label: "Material", value: "Natural Leather", sub: "Premium hides only — never synthetic" },
           ].map((stat, i) => (
             <motion.div key={stat.label} variants={fadeUp} custom={i} className="bg-background p-10">
               <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-2">{stat.label}</p>

@@ -14,7 +14,7 @@ const ORGANIZATION_JSON_LD = {
   url: SITE_URL,
   logo: `${SITE_URL}/aani-logo.png`,
   description:
-    "AANI is a luxury leather goods house making clutches and handbags by hand in genuine Italian leather — from our signature woven Trellara styles to smooth, minimal silhouettes.",
+    "AANI is a luxury leather goods house making clutches and handbags by hand in premium Italian leather — from our signature woven Trellara styles to smooth, minimal silhouettes.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "New York",

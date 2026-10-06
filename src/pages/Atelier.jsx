@@ -37,7 +37,7 @@ export default function Atelier() {
               Made slowly.<br /><span className="italic">Made by hand.</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={2} className="font-sans text-sm leading-relaxed text-muted-foreground mb-6">
-              Every AANI piece is made by hand in our atelier from genuine Italian leather. Each bag is made from start to finish by a single artisan — no assembly line, no shortcuts.
+              Every AANI piece is made by hand in our atelier from premium Italian leather. Each bag is made from start to finish by a single artisan — no assembly line, no shortcuts.
             </motion.p>
             <motion.p variants={fadeUp} custom={3} className="font-sans text-sm leading-relaxed text-muted-foreground">
               For our woven Trellara styles, a single piece takes between 48 and 72 hours of weaving. That time is not a cost we try to reduce — it is what makes each piece worth keeping.
