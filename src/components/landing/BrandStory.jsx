@@ -40,7 +40,7 @@ export default function BrandStory() {
             className="md:col-span-7 md:pt-4"
           >
             <motion.p variants={fadeUp} custom={2} className="font-sans text-base md:text-lg leading-relaxed text-muted-foreground">
-              AANI lives in the space between simplicity and drama. Every piece begins with a simple silhouette, then turns the volume up: exaggerated shapes and bold proportions that command attention. The outline stays clean; the details refuse to be quiet. Made by hand by master artisans from the finest Italian leather and released in strictly limited quantities each month, it is for the woman who refuses to choose between quiet and unforgettable.
+              AANI lives in the space between elegance and drama. Every piece begins with a simple silhouette, then turns the volume up: exaggerated shapes and bold proportions that command attention. The outline stays clean; the details refuse to be quiet. Made by hand by master artisans from the finest Italian leather and released in strictly limited quantities each month, it is for the woman who refuses to choose between quiet and unforgettable.
             </motion.p>
           </motion.div>
         </div>
