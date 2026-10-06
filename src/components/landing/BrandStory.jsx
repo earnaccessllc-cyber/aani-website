@@ -27,9 +27,9 @@ export default function BrandStory() {
               The Narrative
             </motion.p>
             <motion.h2 variants={fadeUp} custom={1} className="font-serif text-4xl md:text-5xl font-light leading-tight text-foreground">
-              Less in line,
+              Quiet form,
               <br />
-              <span className="italic">more in feeling</span>
+              <span className="italic">loud presence</span>
             </motion.h2>
           </motion.div>
 
