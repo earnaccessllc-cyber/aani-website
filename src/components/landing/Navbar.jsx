@@ -39,11 +39,10 @@ export default function Navbar() {
               where it can't be seen. Every other page keeps it. */}
           <Link
             to="/"
-            className={`font-serif text-2xl md:text-3xl font-light tracking-widest text-foreground drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] ${
-              isHome ? "invisible" : ""
-            }`}
+            className={isHome ? "invisible" : ""}
+            aria-label="AANI home"
           >
-            AANI
+            <img src="/aani-logo.png" alt="AANI" className="h-6 md:h-8 w-auto dark:invert" />
           </Link>
 
           <div className="hidden md:flex items-center gap-10">

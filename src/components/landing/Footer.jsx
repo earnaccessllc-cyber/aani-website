@@ -9,9 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-4">
-            <p className="font-serif text-3xl font-light tracking-widest text-foreground mb-4">
-              AANI
-            </p>
+            <img src="/aani-logo.png" alt="AANI" className="h-8 w-auto mb-4 dark:invert" />
             <p className="font-sans text-sm text-muted-foreground leading-relaxed max-w-xs">
               A study in texture, silence, and the enduring beauty of things made slowly, by hand.
             </p>

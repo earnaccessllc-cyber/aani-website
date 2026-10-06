@@ -12,7 +12,7 @@ const ORGANIZATION_JSON_LD = {
   "@type": "Organization",
   name: "AANI",
   url: SITE_URL,
-  logo: `${SITE_URL}/favicon.svg`,
+  logo: `${SITE_URL}/aani-logo.png`,
   description:
     "AANI is a luxury leather goods house handcrafting the Trellara hand-woven leather clutch and handbag collection.",
   address: {
