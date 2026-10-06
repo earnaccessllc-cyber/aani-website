@@ -43,7 +43,7 @@ export default function Craft() {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-6">
             <motion.div variants={fadeUp} custom={0} className="aspect-[3/4] overflow-hidden rounded-sm bg-card">
               <img
-                src="/craft-leather-strips.jpg"
+                src="/craft-leather-strips-v2.jpg"
                 alt="Hand-cut leather strips measured for the Trellara weave"
                 className="w-full h-full object-cover"
                 loading="lazy"
