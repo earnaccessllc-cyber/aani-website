@@ -68,7 +68,7 @@ export default function TextureShowcase() {
               <span className="italic">of texture</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={2} className="font-sans text-sm leading-relaxed text-muted-foreground mb-10 max-w-md">
-              In a world saturated with logos, AANI speaks through touch alone. The Trellara weave is not
+              On our woven styles, AANI speaks first through touch. The Trellara weave is not
               a decorative choice — it is an identity, recognizable by fingertip before eye.
             </motion.p>
 

@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 const pillars = [
   {
     number: "01",
-    title: "Invisible Identity",
-    text: "In an age of over-signification, we chose silence. No logo adorns our surfaces — yet the hand knows. The eye knows. Our signature is written in shape, texture, and finish rather than type.",
+    title: "Quiet Identity",
+    text: "We let the piece speak first. Whether it carries a discreet AANI mark or none at all, the hand knows. The eye knows. Our signature is written in shape, texture, and finish.",
   },
   {
     number: "02",
