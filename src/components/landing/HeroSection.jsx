@@ -72,6 +72,8 @@ export default function HeroSection() {
         <img
           src={HERO_POSTER}
           alt=""
+          // React 18 only passes the lowercase attribute through to the DOM.
+          // eslint-disable-next-line react/no-unknown-property
           fetchpriority="high"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
