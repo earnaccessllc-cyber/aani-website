@@ -56,7 +56,7 @@ export default function ThankYou() {
               to="/collection"
               className="font-sans text-xs tracking-widest uppercase border border-foreground text-foreground py-3 px-8 hover:bg-foreground hover:text-background transition-colors duration-300"
             >
-              Return to Collection
+              Return to Portfolio Collection
             </Link>
             <Link
               to="/"

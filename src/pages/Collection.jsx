@@ -44,7 +44,7 @@ export default function Collection() {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="The Collection"
+        title="Portfolio Collection"
         description="Explore the AANI capsule collection — Italian leather clutches and handbags, woven and smooth, released in strictly limited monthly runs."
         path="/collection"
       />
@@ -77,7 +77,7 @@ export default function Collection() {
                 Autumn/Winter 2026
               </p>
               <h1 className="font-serif text-5xl md:text-6xl font-light leading-none">
-                The Collection
+                Portfolio Collection
               </h1>
             </motion.div>
 
