@@ -9,6 +9,11 @@ import LineDetail from "@/components/collection/LineDetail";
 import { COLLECTION_LINES } from "@/lib/collectionData";
 import SEO from "@/components/SEO";
 
+const CATEGORIES = [
+  { id: "woven", label: "Woven" },
+  { id: "smooth", label: "Smooth" },
+];
+
 export default function Collection() {
   const [selectedLine, setSelectedLine] = useState(null);
 
@@ -52,16 +57,29 @@ export default function Collection() {
               </h1>
             </motion.div>
 
-            {/* 3-card grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10">
-              {COLLECTION_LINES.map((line, i) => (
-                <LineCard
-                  key={line.id}
-                  line={line}
-                  index={i}
-                  onClick={setSelectedLine}
-                />
-              ))}
+            {/* Sections by category */}
+            <div className="space-y-20">
+              {CATEGORIES.map((category) => {
+                const lines = COLLECTION_LINES.filter((line) => line.category === category.id);
+                if (lines.length === 0) return null;
+                return (
+                  <section key={category.id}>
+                    <h2 className="font-sans text-xs tracking-widest uppercase text-muted-foreground border-b border-border pb-4 mb-10">
+                      {category.label}
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10">
+                      {lines.map((line, i) => (
+                        <LineCard
+                          key={line.id}
+                          line={line}
+                          index={i}
+                          onClick={setSelectedLine}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                );
+              })}
             </div>
           </motion.div>
         ) : (

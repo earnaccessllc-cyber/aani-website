@@ -1,6 +1,7 @@
 export const COLLECTION_LINES = [
   {
     id: "intrecciato",
+    category: "woven",
     name: "The Trellara Portfolio Clutch",
     subtitle: "Woven Leather",
     material: "Hand-woven calfskin, trellara technique",
@@ -49,6 +50,7 @@ export const COLLECTION_LINES = [
   },
   {
     id: "liscio",
+    category: "smooth",
     name: "The Liscio Clutch",
     subtitle: "Smooth Leather",
     material: "Full-grain smooth calfskin",
