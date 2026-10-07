@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import LineDetail from "@/components/collection/LineDetail";
-import { COLLECTION_LINES } from "@/lib/collectionData";
+import { useCollectionLines } from "@/lib/useCollectionLines";
 import SEO from "@/components/SEO";
 
 function ColorwayCard({ line, colorway, index, onClick }) {
@@ -39,6 +39,7 @@ function ColorwayCard({ line, colorway, index, onClick }) {
 
 export default function Collection() {
   const [selected, setSelected] = useState(null);
+  const lines = useCollectionLines();
   const selectedLine = selected?.line;
 
   return (
@@ -83,7 +84,7 @@ export default function Collection() {
 
             {/* One section per style, every colorway shown */}
             <div className="space-y-24">
-              {COLLECTION_LINES.map((line) => (
+              {lines.map((line) => (
                 <section key={line.id}>
                   <div className="flex items-end justify-between border-b border-border pb-4 mb-10">
                     <div>
