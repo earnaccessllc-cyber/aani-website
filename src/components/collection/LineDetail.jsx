@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 
-export default function LineDetail({ line, onBack }) {
+export default function LineDetail({ line, initialColorwayId, onBack }) {
   const [selectedColorway, setSelectedColorway] = useState(
-    line.colorways.find(cw => cw.front === line.heroImage) || line.colorways[0]
+    line.colorways.find(cw => cw.id === initialColorwayId) ||
+    line.colorways.find(cw => cw.front === line.heroImage) ||
+    line.colorways[0]
   );
   const [side, setSide] = useState("front");
   const [lightbox, setLightbox] = useState(false);
