@@ -63,7 +63,7 @@ export default function LineDetail({ line, initialColorwayId, onBack }) {
           onClick={onBack}
           className="inline-flex items-center gap-2 font-sans text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors"
         >
-          <ArrowLeft className="w-3 h-3" /> Portfolio Collection
+          <ArrowLeft className="w-3 h-3" /> Collection
         </button>
       </div>
 

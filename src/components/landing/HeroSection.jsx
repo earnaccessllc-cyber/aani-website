@@ -149,7 +149,7 @@ export default function HeroSection() {
               href="/collection"
               className="inline-flex items-center gap-3 font-sans text-xs tracking-widest uppercase text-foreground border-b border-foreground/30 pb-1 hover:border-foreground transition-colors duration-300"
             >
-              Discover the Portfolio Collection
+              Discover the Collection
               <span className="text-lg">→</span>
             </a>
           </motion.div>
