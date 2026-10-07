@@ -22,7 +22,7 @@ export default function Footer() {
             </p>
             <div className="space-y-3">
               {[
-                { label: "Portfolio Collection", path: "/collection" },
+                { label: "Collection", path: "/collection" },
                 { label: "Métier", path: "/metier" },
                 { label: "Atelier", path: "/atelier" },
                 { label: "Stockists", path: "/stockists" },
