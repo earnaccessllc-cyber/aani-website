@@ -4,18 +4,42 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
-import LineCard from "@/components/collection/LineCard";
 import LineDetail from "@/components/collection/LineDetail";
 import { COLLECTION_LINES } from "@/lib/collectionData";
 import SEO from "@/components/SEO";
 
-const CATEGORIES = [
-  { id: "woven", label: "Woven" },
-  { id: "smooth", label: "Smooth" },
-];
+function ColorwayCard({ line, colorway, index, onClick }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.08 }}
+      className="group cursor-pointer"
+      onClick={onClick}
+    >
+      <div className="relative aspect-[3/4] overflow-hidden mb-4 border border-black bg-black">
+        <img
+          src={colorway.front}
+          alt={`${line.name} in ${colorway.label}`}
+          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <h3 className="font-serif text-lg font-light text-foreground">{line.name}</h3>
+          <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mt-1">{colorway.label}</p>
+        </div>
+        <p className="font-sans text-sm text-foreground mb-0.5">${line.price.toLocaleString()}</p>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Collection() {
-  const [selectedLine, setSelectedLine] = useState(null);
+  const [selected, setSelected] = useState(null);
+  const selectedLine = selected?.line;
 
   return (
     <div className="min-h-screen bg-background">
@@ -57,29 +81,30 @@ export default function Collection() {
               </h1>
             </motion.div>
 
-            {/* Sections by category */}
-            <div className="space-y-20">
-              {CATEGORIES.map((category) => {
-                const lines = COLLECTION_LINES.filter((line) => line.category === category.id);
-                if (lines.length === 0) return null;
-                return (
-                  <section key={category.id}>
-                    <h2 className="font-sans text-xs tracking-widest uppercase text-muted-foreground border-b border-border pb-4 mb-10">
-                      {category.label}
-                    </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10">
-                      {lines.map((line, i) => (
-                        <LineCard
-                          key={line.id}
-                          line={line}
-                          index={i}
-                          onClick={setSelectedLine}
-                        />
-                      ))}
+            {/* One section per style, every colorway shown */}
+            <div className="space-y-24">
+              {COLLECTION_LINES.map((line) => (
+                <section key={line.id}>
+                  <div className="flex items-end justify-between border-b border-border pb-4 mb-10">
+                    <div>
+                      <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-1">{line.subtitle}</p>
+                      <h2 className="font-serif text-3xl font-light text-foreground">{line.name}</h2>
                     </div>
-                  </section>
-                );
-              })}
+                    <p className="font-sans text-xs text-muted-foreground">{line.colorways.length} colors</p>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
+                    {line.colorways.map((colorway, i) => (
+                      <ColorwayCard
+                        key={colorway.id}
+                        line={line}
+                        colorway={colorway}
+                        index={i}
+                        onClick={() => { setSelected({ line, colorwayId: colorway.id }); window.scrollTo(0, 0); }}
+                      />
+                    ))}
+                  </div>
+                </section>
+              ))}
             </div>
           </motion.div>
         ) : (
@@ -91,8 +116,10 @@ export default function Collection() {
             transition={{ duration: 0.3 }}
           >
             <LineDetail
+              key={`${selectedLine.id}-${selected.colorwayId}`}
               line={selectedLine}
-              onBack={() => setSelectedLine(null)}
+              initialColorwayId={selected.colorwayId}
+              onBack={() => setSelected(null)}
             />
             <Footer />
           </motion.div>
