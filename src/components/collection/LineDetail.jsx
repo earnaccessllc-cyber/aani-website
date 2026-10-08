@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 
-export default function LineDetail({ line, initialColorwayId, onBack }) {
+export default function LineDetail({ line, initialColorwayId, onBack, onColorwayChange }) {
   const [selectedColorway, setSelectedColorway] = useState(
     line.colorways.find(cw => cw.id === initialColorwayId) ||
     line.colorways.find(cw => cw.front === line.heroImage) ||
@@ -40,6 +40,7 @@ export default function LineDetail({ line, initialColorwayId, onBack }) {
   const handleSwatchClick = (colorway) => {
     setSelectedColorway(colorway);
     setSide("front");
+    onColorwayChange?.(colorway);
   };
 
   const currentIndex = line.colorways.findIndex(c => c.id === selectedColorway.id);

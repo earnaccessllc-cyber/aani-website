@@ -12,6 +12,7 @@ const Craft = lazy(() => import('./pages/Craft'));
 const Atelier = lazy(() => import('./pages/Atelier'));
 const ThankYou = lazy(() => import('./pages/ThankYou'));
 const Stockists = lazy(() => import('./pages/Stockists'));
+const Product = lazy(() => import('./pages/Product'));
 // Add page imports here
 
 const RouteFallback = () => (
@@ -30,6 +31,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/collection" element={<Collection />} />
+              <Route path="/collection/:lineId/:colorwayId" element={<Product />} />
               <Route path="/metier" element={<Craft />} />
               <Route path="/craft" element={<Craft />} />
               <Route path="/vision" element={<Craft />} />

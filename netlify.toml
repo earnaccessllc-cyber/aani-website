@@ -43,6 +43,21 @@
   status = 200
 
 [[redirects]]
+  from = "/collection/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/metier"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/stockists"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
   from = "/craft"
   to = "/index.html"
   status = 200
