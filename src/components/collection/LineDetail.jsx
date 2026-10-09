@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCart } from "@/lib/cart";
 
@@ -92,14 +92,11 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
             </div>
 
             {/* Lightbox */}
-            <AnimatePresence>
-              {lightbox && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+            {/* Opens and closes instantly on a near-opaque backdrop. A fade let the
+                page photo show through at a different size, which looked like a glitch. */}
+            {lightbox && (
+                <div
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
                   onClick={() => setLightbox(false)}
                 >
                   {/* Current colorway name */}
@@ -171,9 +168,8 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                       <span className="font-sans text-xs tracking-widest uppercase text-white/50 group-hover:text-white transition-colors">{nextColorway.label}</span>
                     </button>
                   )}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                </div>
+            )}
 
             {/* Front / Back toggle */}
             <div className="flex items-center gap-1 self-center">
