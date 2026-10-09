@@ -97,12 +97,28 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                     <p className="font-sans text-xs tracking-widest uppercase text-white/70">{selectedColorway.label}</p>
                   </div>
 
-                  <img
-                    key={currentImage}
-                    src={currentImage}
-                    alt={`${line.name} — ${selectedColorway.label} ${side}`}
-                    className="max-h-[95vh] max-w-[95vw] object-contain cursor-zoom-out"
-                  />
+                  {/* Same already-loaded photos as the page, stacked in one grid cell,
+                      so opening or switching never reloads or flashes. */}
+                  <div className="grid place-items-center" onClick={e => e.stopPropagation()}>
+                    {line.colorways.flatMap((cw) =>
+                      ["front", "back"].map((s) => {
+                        const src = cw[s];
+                        const active = src === currentImage;
+                        return (
+                          <img
+                            key={`lb-${cw.id}-${s}`}
+                            src={src}
+                            alt={`${line.name} — ${cw.label} ${s}`}
+                            aria-hidden={!active}
+                            onClick={() => setLightbox(false)}
+                            className={`col-start-1 row-start-1 max-h-[95vh] max-w-[95vw] object-contain cursor-zoom-out transition-opacity duration-300 ${
+                              active ? "opacity-100" : "opacity-0 pointer-events-none"
+                            }`}
+                          />
+                        );
+                      })
+                    )}
+                  </div>
 
                   {/* Front / Back buttons inside lightbox */}
                   <div
