@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCart } from "@/lib/cart";
@@ -12,6 +12,16 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
   const [side, setSide] = useState("front");
   const [lightbox, setLightbox] = useState(false);
   const { addItem, buyNow, checkingOut, error: checkoutError } = useCart();
+
+  // Keep the page from scrolling underneath the enlarged photo.
+  useEffect(() => {
+    if (!lightbox) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [lightbox]);
 
   const handleAddToBag = () => addItem(line.id, selectedColorway.id, 1);
   const handleBuyNow = () => buyNow(line.id, selectedColorway.id);
@@ -34,7 +44,7 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.2 }}
       className="min-h-screen bg-background"
     >
       {/* Back button */}
@@ -111,7 +121,7 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                             alt={`${line.name} — ${cw.label} ${s}`}
                             aria-hidden={!active}
                             onClick={() => setLightbox(false)}
-                            className={`col-start-1 row-start-1 max-h-[95vh] max-w-[95vw] object-contain cursor-zoom-out transition-opacity duration-300 ${
+                            className={`col-start-1 row-start-1 max-h-[95dvh] max-w-[95vw] object-contain cursor-zoom-out transition-opacity duration-300 ${
                               active ? "opacity-100" : "opacity-0 pointer-events-none"
                             }`}
                           />
