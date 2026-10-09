@@ -1,9 +1,9 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { CartProvider } from '@/lib/cart';
 import CartDrawer from '@/components/cart/CartDrawer';
@@ -23,6 +23,20 @@ const RouteFallback = () => (
   </div>
 );
 
+// Every page change starts at the top (the browser's own restore jumped around
+// while the page was still laying out). Switching colors stays on one product
+// page, so it doesn't scroll.
+if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  const key = pathname.startsWith('/collection/') ? '/collection/product' : pathname;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [key]);
+  return null;
+}
+
 function App() {
 
   return (
@@ -30,6 +44,7 @@ function App() {
       <QueryClientProvider client={queryClientInstance}>
         <CartProvider>
         <Router>
+          <ScrollToTop />
           <Suspense fallback={<RouteFallback />}>
             <Routes>
               <Route path="/" element={<Home />} />
