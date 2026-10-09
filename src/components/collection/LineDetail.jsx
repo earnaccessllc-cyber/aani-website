@@ -56,18 +56,29 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
               className="relative aspect-[4/5] overflow-hidden cursor-zoom-in border border-black bg-black"
               onClick={() => setLightbox(true)}
             >
-              <AnimatePresence>
-                <motion.img
-                  key={currentImage}
-                  src={currentImage}
-                  alt={`${line.name} — ${selectedColorway.label} ${side}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 w-full h-full object-contain"
-                />
-              </AnimatePresence>
+              {/* Every photo for this style is mounted once and just faded in/out,
+                  so switching colors never waits on a download or flashes blank. */}
+              {line.colorways.flatMap((cw) =>
+                ["front", "back"].map((s) => {
+                  const src = cw[s];
+                  const active = src === currentImage;
+                  return (
+                    <img
+                      key={`${cw.id}-${s}`}
+                      src={src}
+                      alt={`${line.name} — ${cw.label} ${s}`}
+                      width={1024}
+                      height={1024}
+                      decoding="async"
+                      loading="eager"
+                      aria-hidden={!active}
+                      className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                        active ? "opacity-100" : "opacity-0 pointer-events-none"
+                      }`}
+                    />
+                  );
+                })
+              )}
             </div>
 
             {/* Lightbox */}
