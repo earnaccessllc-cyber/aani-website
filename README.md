@@ -15,7 +15,9 @@ the frontend has no build-time dependency on any external app platform.
 
 Checkout is handled by two Netlify Functions in `netlify/functions/`:
 
-- `create-checkout.js` — creates a Stripe Checkout Session and returns its
+- `create-checkout.js` — takes the bag (`{ items: [{ lineId, colorwayId, qty }] }`),
+  prices it on the server from `src/lib/collectionData.js` (never from the
+  browser), collects a US shipping address and phone, and returns the Stripe
   redirect URL. Exposed at `/api/create-checkout`.
 - `stripe-webhook.js` — verifies and logs the `checkout.session.completed`
   webhook event. Exposed at `/api/stripe-webhook`.
@@ -26,6 +28,7 @@ for the full list and where to get each value:
 
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
+- `SHIPPING_CENTS` (optional flat shipping per order in cents, e.g. 1500 = $15; unset = complimentary)
 
 To test checkout locally, use the [Netlify CLI](https://docs.netlify.com/cli/get-started/)
 (`netlify dev`) so the functions run alongside the Vite dev server, and the

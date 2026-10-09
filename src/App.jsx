@@ -5,6 +5,8 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
+import { CartProvider } from '@/lib/cart';
+import CartDrawer from '@/components/cart/CartDrawer';
 
 const Home = lazy(() => import('./pages/Home'));
 const Collection = lazy(() => import('./pages/Collection.jsx'));
@@ -26,6 +28,7 @@ function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClientInstance}>
+        <CartProvider>
         <Router>
           <Suspense fallback={<RouteFallback />}>
             <Routes>
@@ -41,7 +44,9 @@ function App() {
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Suspense>
+          <CartDrawer />
         </Router>
+        </CartProvider>
         <Toaster />
       </QueryClientProvider>
     </HelmetProvider>

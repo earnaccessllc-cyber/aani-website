@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
+import { useCart } from "@/lib/cart";
 
 export default function LineDetail({ line, initialColorwayId, onBack, onColorwayChange }) {
   const [selectedColorway, setSelectedColorway] = useState(
@@ -10,32 +11,10 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
   );
   const [side, setSide] = useState("front");
   const [lightbox, setLightbox] = useState(false);
-  const [purchasing, setPurchasing] = useState(false);
+  const { addItem, buyNow, checkingOut, error: checkoutError } = useCart();
 
-  const handleBuyNow = async () => {
-    setPurchasing(true);
-    try {
-      const response = await fetch("/api/create-checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: line.name,
-          price: line.price,
-          colorway: selectedColorway.label,
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok || !data.redirectUrl) {
-        throw new Error(data.error || "Checkout failed");
-      }
-      const win = window.open(data.redirectUrl, "_blank");
-      if (!win) window.location.href = data.redirectUrl;
-    } catch (err) {
-      console.error("Checkout failed:", err);
-    } finally {
-      setPurchasing(false);
-    }
-  };
+  const handleAddToBag = () => addItem(line.id, selectedColorway.id, 1);
+  const handleBuyNow = () => buyNow(line.id, selectedColorway.id);
 
   const handleSwatchClick = (colorway) => {
     setSelectedColorway(colorway);
@@ -231,31 +210,27 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
 
             {/* CTA */}
             <button
-              onClick={handleBuyNow}
-              disabled={purchasing}
-              className="flex items-center justify-center gap-2 bg-foreground text-background font-sans text-xs tracking-widest uppercase py-4 px-10 hover:opacity-80 transition-opacity self-start disabled:opacity-60"
+              onClick={handleAddToBag}
+              className="flex items-center justify-center gap-2 bg-foreground text-background font-sans text-xs tracking-widest uppercase py-4 px-10 hover:opacity-80 transition-opacity self-start"
             >
-              {purchasing ? (
-                <Loader2 className="w-3.5 h-3.5 animate-spin" />
-              ) : (
-                <ShoppingBag className="w-3.5 h-3.5" />
-              )}
-              {purchasing ? "Redirecting..." : "Add to Bag"}
+              <ShoppingBag className="w-3.5 h-3.5" />
+              Add to Bag
             </button>
 
             {/* BNPL Options */}
             <div className="mt-4 flex flex-col gap-2 self-start w-full max-w-xs">
               <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-1">Or pay in installments with</p>
               {/* Klarna */}
-              <button onClick={handleBuyNow} disabled={purchasing} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
+              <button onClick={handleBuyNow} disabled={checkingOut} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
                 <span className="font-sans text-sm font-semibold text-foreground tracking-tight">Klarna</span>
                 <span className="font-sans text-xs text-muted-foreground group-hover:text-foreground transition-colors">4 × ${(line.price / 4).toLocaleString()} — interest-free</span>
               </button>
               {/* Afterpay */}
-              <button onClick={handleBuyNow} disabled={purchasing} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
+              <button onClick={handleBuyNow} disabled={checkingOut} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
                 <span className="font-sans text-sm font-semibold text-foreground tracking-tight">Afterpay</span>
                 <span className="font-sans text-xs text-muted-foreground group-hover:text-foreground transition-colors">4 × ${(line.price / 4).toLocaleString()} — interest-free</span>
               </button>
+              {checkoutError && <p role="alert" className="font-sans text-xs text-destructive mt-1">{checkoutError}</p>}
             </div>
           </div>
         </div>
