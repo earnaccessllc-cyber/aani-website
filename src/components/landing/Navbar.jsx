@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useCart } from "@/lib/cart";
 
 const navLinks = [
   { label: "Collection", href: "/collection" },
@@ -13,6 +14,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const { count, setOpen: openCart } = useCart();
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -58,12 +60,26 @@ export default function Navbar() {
             ))}
           </div>
 
+          <div className="flex items-center gap-5">
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
+            onClick={() => openCart(true)}
+            aria-label={`Open bag${count ? `, ${count} items` : ""}`}
+            className="relative text-white md:text-muted-foreground md:hover:text-foreground transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] md:drop-shadow-none"
           >
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <ShoppingBag className="w-5 h-5" />
+            {count > 0 && (
+              <span className="absolute -top-2 -right-2 min-w-4 h-4 px-1 rounded-full bg-primary text-primary-foreground font-sans text-[10px] leading-4 text-center">
+                {count}
+              </span>
+            )}
           </button>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
+            >
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 
