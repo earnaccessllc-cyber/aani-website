@@ -39,6 +39,12 @@ export function cartSubtotal(resolved) {
   return resolved.reduce((sum, { line, qty }) => sum + line.price * qty, 0);
 }
 
+// Stripe only accepts absolute image URLs, and the catalog stores site-relative
+// paths (/images/products/...), so attach the site origin.
+function absoluteUrl(path, origin) {
+  return /^https?:\/\//.test(path) ? path : `${origin}${path}`;
+}
+
 // Builds the parameters for stripe.checkout.sessions.create().
 export function buildCheckoutParams({ items, origin, shippingCents = 0 }) {
   const resolved = resolveCart(items);
@@ -54,7 +60,7 @@ export function buildCheckoutParams({ items, origin, shippingCents = 0 }) {
         product_data: {
           name: `${line.name} — ${colorway.label}`,
           description: line.material,
-          images: [colorway.front],
+          images: [absoluteUrl(colorway.front, origin)],
           metadata: { line_id: line.id, colorway_id: colorway.id },
         },
       },
