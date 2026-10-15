@@ -72,7 +72,12 @@ export default async (req) => {
     const session = await stripe.checkout.sessions.create(params);
     return json({ redirectUrl: session.url });
   } catch (error) {
-    console.error("create-checkout error:", error.message);
+    // Shape-only diagnostics (no part of the key is logged) plus the low-level cause.
+    console.error("create-checkout error:", error.message, {
+      keyLength: STRIPE_SECRET_KEY.length,
+      keyLooksValid: /^sk_(test|live)_[A-Za-z0-9]+$/.test(STRIPE_SECRET_KEY),
+      cause: error.detail?.message || error.raw?.message || null,
+    });
     return json({ error: "Could not start checkout. Please try again." }, 500);
   }
 };
