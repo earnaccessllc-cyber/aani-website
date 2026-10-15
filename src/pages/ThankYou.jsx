@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import SEO from "@/components/SEO";
+import { useCart } from "@/lib/cart";
 
 export default function ThankYou() {
+  const { clear } = useCart();
+  // Stripe sends customers here with ?session_id=... after paying, so empty the bag then.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("session_id")) clear();
+  }, [clear]);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO

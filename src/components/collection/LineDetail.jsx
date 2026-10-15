@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
+import { useCart } from "@/lib/cart";
 
 export default function LineDetail({ line, initialColorwayId, onBack, onColorwayChange }) {
   const [selectedColorway, setSelectedColorway] = useState(
@@ -10,32 +11,20 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
   );
   const [side, setSide] = useState("front");
   const [lightbox, setLightbox] = useState(false);
-  const [purchasing, setPurchasing] = useState(false);
+  const { addItem, buyNow, checkingOut, error: checkoutError } = useCart();
 
-  const handleBuyNow = async () => {
-    setPurchasing(true);
-    try {
-      const response = await fetch("/api/create-checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: line.name,
-          price: line.price,
-          colorway: selectedColorway.label,
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok || !data.redirectUrl) {
-        throw new Error(data.error || "Checkout failed");
-      }
-      const win = window.open(data.redirectUrl, "_blank");
-      if (!win) window.location.href = data.redirectUrl;
-    } catch (err) {
-      console.error("Checkout failed:", err);
-    } finally {
-      setPurchasing(false);
-    }
-  };
+  // Keep the page from scrolling underneath the enlarged photo.
+  useEffect(() => {
+    if (!lightbox) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [lightbox]);
+
+  const handleAddToBag = () => addItem(line.id, selectedColorway.id, 1);
+  const handleBuyNow = () => buyNow(line.id, selectedColorway.id);
 
   const handleSwatchClick = (colorway) => {
     setSelectedColorway(colorway);
@@ -55,7 +44,7 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.2 }}
       className="min-h-screen bg-background"
     >
       {/* Back button */}
@@ -77,29 +66,37 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
               className="relative aspect-[4/5] overflow-hidden cursor-zoom-in border border-black bg-black"
               onClick={() => setLightbox(true)}
             >
-              <AnimatePresence>
-                <motion.img
-                  key={currentImage}
-                  src={currentImage}
-                  alt={`${line.name} — ${selectedColorway.label} ${side}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 w-full h-full object-contain"
-                />
-              </AnimatePresence>
+              {/* Every photo for this style is mounted once and just faded in/out,
+                  so switching colors never waits on a download or flashes blank. */}
+              {line.colorways.flatMap((cw) =>
+                ["front", "back"].map((s) => {
+                  const src = cw[s];
+                  const active = src === currentImage;
+                  return (
+                    <img
+                      key={`${cw.id}-${s}`}
+                      src={src}
+                      alt={`${line.name} — ${cw.label} ${s}`}
+                      width={1024}
+                      height={1024}
+                      decoding="async"
+                      loading="eager"
+                      aria-hidden={!active}
+                      className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                        active ? "opacity-100" : "opacity-0 pointer-events-none"
+                      }`}
+                    />
+                  );
+                })
+              )}
             </div>
 
             {/* Lightbox */}
-            <AnimatePresence>
-              {lightbox && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+            {/* Opens and closes instantly on a near-opaque backdrop. A fade let the
+                page photo show through at a different size, which looked like a glitch. */}
+            {lightbox && (
+                <div
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
                   onClick={() => setLightbox(false)}
                 >
                   {/* Current colorway name */}
@@ -107,12 +104,28 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                     <p className="font-sans text-xs tracking-widest uppercase text-white/70">{selectedColorway.label}</p>
                   </div>
 
-                  <img
-                    key={currentImage}
-                    src={currentImage}
-                    alt={`${line.name} — ${selectedColorway.label} ${side}`}
-                    className="max-h-[95vh] max-w-[95vw] object-contain cursor-zoom-out"
-                  />
+                  {/* Same already-loaded photos as the page, stacked in one grid cell,
+                      so opening or switching never reloads or flashes. */}
+                  <div className="grid place-items-center" onClick={e => e.stopPropagation()}>
+                    {line.colorways.flatMap((cw) =>
+                      ["front", "back"].map((s) => {
+                        const src = cw[s];
+                        const active = src === currentImage;
+                        return (
+                          <img
+                            key={`lb-${cw.id}-${s}`}
+                            src={src}
+                            alt={`${line.name} — ${cw.label} ${s}`}
+                            aria-hidden={!active}
+                            onClick={() => setLightbox(false)}
+                            className={`col-start-1 row-start-1 max-h-[95dvh] max-w-[95vw] object-contain cursor-zoom-out transition-opacity duration-300 ${
+                              active ? "opacity-100" : "opacity-0 pointer-events-none"
+                            }`}
+                          />
+                        );
+                      })
+                    )}
+                  </div>
 
                   {/* Front / Back buttons inside lightbox */}
                   <div
@@ -155,9 +168,8 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                       <span className="font-sans text-xs tracking-widest uppercase text-white/50 group-hover:text-white transition-colors">{nextColorway.label}</span>
                     </button>
                   )}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                </div>
+            )}
 
             {/* Front / Back toggle */}
             <div className="flex items-center gap-1 self-center">
@@ -231,31 +243,27 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
 
             {/* CTA */}
             <button
-              onClick={handleBuyNow}
-              disabled={purchasing}
-              className="flex items-center justify-center gap-2 bg-foreground text-background font-sans text-xs tracking-widest uppercase py-4 px-10 hover:opacity-80 transition-opacity self-start disabled:opacity-60"
+              onClick={handleAddToBag}
+              className="flex items-center justify-center gap-2 bg-foreground text-background font-sans text-xs tracking-widest uppercase py-4 px-10 hover:opacity-80 transition-opacity self-start"
             >
-              {purchasing ? (
-                <Loader2 className="w-3.5 h-3.5 animate-spin" />
-              ) : (
-                <ShoppingBag className="w-3.5 h-3.5" />
-              )}
-              {purchasing ? "Redirecting..." : "Add to Bag"}
+              <ShoppingBag className="w-3.5 h-3.5" />
+              Add to Bag
             </button>
 
             {/* BNPL Options */}
             <div className="mt-4 flex flex-col gap-2 self-start w-full max-w-xs">
               <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-1">Or pay in installments with</p>
               {/* Klarna */}
-              <button onClick={handleBuyNow} disabled={purchasing} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
+              <button onClick={handleBuyNow} disabled={checkingOut} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
                 <span className="font-sans text-sm font-semibold text-foreground tracking-tight">Klarna</span>
                 <span className="font-sans text-xs text-muted-foreground group-hover:text-foreground transition-colors">4 × ${(line.price / 4).toLocaleString()} — interest-free</span>
               </button>
               {/* Afterpay */}
-              <button onClick={handleBuyNow} disabled={purchasing} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
+              <button onClick={handleBuyNow} disabled={checkingOut} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
                 <span className="font-sans text-sm font-semibold text-foreground tracking-tight">Afterpay</span>
                 <span className="font-sans text-xs text-muted-foreground group-hover:text-foreground transition-colors">4 × ${(line.price / 4).toLocaleString()} — interest-free</span>
               </button>
+              {checkoutError && <p role="alert" className="font-sans text-xs text-destructive mt-1">{checkoutError}</p>}
             </div>
           </div>
         </div>

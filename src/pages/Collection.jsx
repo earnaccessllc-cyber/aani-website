@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
@@ -10,9 +10,9 @@ import SEO from "@/components/SEO";
 function ColorwayCard({ line, colorway, index }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.08 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, delay: Math.min(index * 0.04, 0.2) }}
       className="group"
     >
       <Link to={`/collection/${line.id}/${colorway.id}`} className="block">
@@ -21,7 +21,7 @@ function ColorwayCard({ line, colorway, index }) {
           src={colorway.front}
           alt={`${line.name} in ${colorway.label}`}
           className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
-          loading="lazy"
+          loading="eager"
           decoding="async"
         />
       </div>
@@ -39,6 +39,12 @@ function ColorwayCard({ line, colorway, index }) {
 
 export default function Collection() {
   const lines = useCollectionLines();
+
+  // Fetch the product page code while the visitor browses, so opening a
+  // product never flashes the loading spinner.
+  useEffect(() => {
+    import("./Product");
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">

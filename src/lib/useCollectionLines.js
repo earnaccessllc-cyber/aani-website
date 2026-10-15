@@ -1,34 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/api/supabaseClient';
 import { COLLECTION_LINES } from '@/lib/collectionData';
 
-async function fetchCollectionLines() {
-  const { data, error } = await supabase
-    .from('product_lines')
-    .select('*, colorways(*)')
-    .order('sort_order')
-    .order('sort_order', { referencedTable: 'colorways' });
-  if (error) throw error;
-  return data.map((l) => ({
-    id: l.id,
-    category: l.category,
-    name: l.name,
-    subtitle: l.subtitle,
-    material: l.material,
-    description: l.description,
-    price: Number(l.price),
-    heroImage: l.hero_image,
-    colorways: l.colorways.map(({ id, label, swatch, front, back }) => ({ id, label, swatch, front, back })),
-  }));
-}
-
-// Reads the catalog from Supabase; shows the bundled list until it loads,
-// and keeps showing it if Supabase isn't configured or the request fails.
+// The catalog lives in collectionData.js. The bag and the server-side checkout
+// read the same file, so what a customer sees is always what they are charged.
+// (It used to be fetched from Supabase on every page view, which added a
+// network round trip before products could change.)
 export function useCollectionLines() {
-  const { data } = useQuery({
-    queryKey: ['collection-lines'],
-    queryFn: fetchCollectionLines,
-    enabled: !!supabase,
-  });
-  return data?.length ? data : COLLECTION_LINES;
+  return COLLECTION_LINES;
 }
