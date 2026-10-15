@@ -46,7 +46,9 @@ const json = (body, status = 200) =>
 export default async (req) => {
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
 
-  const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+  // Pasted keys often carry a trailing space/newline or quotes; either one makes
+  // the Stripe client fail with a generic "connection" error, so clean it up.
+  const STRIPE_SECRET_KEY = (process.env.STRIPE_SECRET_KEY || "").trim().replace(/^["']|["']$/g, "").trim();
   if (!STRIPE_SECRET_KEY) {
     console.error("Missing STRIPE_SECRET_KEY");
     return json({ error: "Checkout is not configured" }, 500);
