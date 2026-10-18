@@ -15,6 +15,7 @@ const Atelier = lazy(() => import('./pages/Atelier'));
 const ThankYou = lazy(() => import('./pages/ThankYou'));
 const Stockists = lazy(() => import('./pages/Stockists'));
 const Product = lazy(() => import('./pages/Product'));
+const Returns = lazy(() => import('./pages/Returns'));
 // Add page imports here
 
 const RouteFallback = () => (
@@ -55,6 +56,7 @@ function App() {
               <Route path="/vision" element={<Craft />} />
               <Route path="/atelier" element={<Atelier />} />
               <Route path="/stockists" element={<Stockists />} />
+              <Route path="/returns" element={<Returns />} />
               <Route path="/thank-you" element={<ThankYou />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
