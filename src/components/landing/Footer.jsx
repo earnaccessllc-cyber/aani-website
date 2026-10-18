@@ -25,6 +25,7 @@ export default function Footer() {
                 { label: "Métier", path: "/metier" },
                 { label: "Atelier", path: "/atelier" },
                 { label: "Stockists", path: "/stockists" },
+                { label: "Returns", path: "/returns" },
               ].map(({ label, path }) =>
               <Link
                 key={label}

@@ -53,6 +53,11 @@
   status = 200
 
 [[redirects]]
+  from = "/returns"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
   from = "/stockists"
   to = "/index.html"
   status = 200
