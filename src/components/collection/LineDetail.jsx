@@ -242,6 +242,12 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
             </p>
 
             {/* CTA */}
+            {selectedColorway.soldOut ? (
+              <p className="inline-flex items-center justify-center border border-border text-muted-foreground font-sans text-xs tracking-widest uppercase py-4 px-10 self-start">
+                Sold Out
+              </p>
+            ) : (
+            <>
             <button
               onClick={handleAddToBag}
               className="flex items-center justify-center gap-2 bg-foreground text-background font-sans text-xs tracking-widest uppercase py-4 px-10 hover:opacity-80 transition-opacity self-start"
@@ -265,6 +271,8 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
               </button>
               {checkoutError && <p role="alert" className="font-sans text-xs text-destructive mt-1">{checkoutError}</p>}
             </div>
+            </>
+            )}
           </div>
         </div>
       </div>

@@ -22,6 +22,7 @@ export function resolveCart(items, lines = COLLECTION_LINES) {
     const line = lines.find((l) => l.id === item?.lineId);
     const colorway = line?.colorways.find((c) => c.id === item?.colorwayId);
     if (!line || !colorway) throw new CartError("One of the items is no longer available");
+    if (colorway.soldOut) throw new CartError(`${line.name} in ${colorway.label} is sold out`);
 
     const key = `${line.id}:${colorway.id}`;
     if (seen.has(key)) throw new CartError("Duplicate item in order");

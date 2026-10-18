@@ -7,6 +7,9 @@ import { useCollectionLines } from "@/lib/useCollectionLines";
 import PageNotFound from "@/lib/PageNotFound";
 import SEO, { SITE_URL } from "@/components/SEO";
 
+// Google needs absolute image URLs; catalog photos are site-relative paths.
+const absoluteUrl = (src) => (src.startsWith("/") ? `${SITE_URL}${src}` : src);
+
 // One indexable URL per style + colorway: /collection/:lineId/:colorwayId.
 export default function Product() {
   const { lineId, colorwayId } = useParams();
@@ -27,7 +30,7 @@ export default function Product() {
       "@type": "Product",
       name: title,
       description: line.description,
-      image: [colorway.front, colorway.back].filter(Boolean),
+      image: [colorway.front, colorway.back].filter(Boolean).map(absoluteUrl),
       sku: `${line.id}-${colorway.id}`,
       color: colorway.label,
       material: line.material,
@@ -39,7 +42,9 @@ export default function Product() {
         url: `${SITE_URL}${path}`,
         priceCurrency: "USD",
         price: line.price,
-        availability: "https://schema.org/InStock",
+        availability: colorway.soldOut
+          ? "https://schema.org/OutOfStock"
+          : "https://schema.org/InStock",
         itemCondition: "https://schema.org/NewCondition",
       },
     },
@@ -56,7 +61,7 @@ export default function Product() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title={title} description={description} path={path} image={colorway.front} jsonLd={jsonLd} />
+      <SEO title={title} description={description} path={path} image={absoluteUrl(colorway.front)} jsonLd={jsonLd} />
       <Navbar />
       <LineDetail
         key={line.id}

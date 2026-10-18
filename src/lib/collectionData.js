@@ -1,3 +1,6 @@
+// To mark a color sold out, add `soldOut: true` to that colorway. The product
+// page then shows "Sold Out", checkout refuses it, and Google is told it is
+// out of stock. Remove the line (or set it to false) when it is back.
 export const COLLECTION_LINES = [
   {
     id: "intrecciato",
