@@ -15,6 +15,12 @@ const ORGANIZATION_JSON_LD = {
   logo: `${SITE_URL}/aani-logo.png`,
   description:
     "AANI is a luxury leather goods house making clutches and handbags by hand in premium Italian leather — from our signature woven Trellara styles to smooth, minimal silhouettes.",
+  email: "contact@aanimetier.com",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "contact@aanimetier.com",
+    contactType: "customer service",
+  },
 };
 
 const WEBSITE_JSON_LD = {
