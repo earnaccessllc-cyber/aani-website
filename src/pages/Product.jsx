@@ -10,6 +10,9 @@ import SEO, { SITE_URL } from "@/components/SEO";
 // Google needs absolute image URLs; catalog photos are site-relative paths.
 const absoluteUrl = (src) => (src.startsWith("/") ? `${SITE_URL}${src}` : src);
 
+// Keep in sync with RETURN_DAYS in src/pages/Returns.jsx and the return policy in Google Merchant Center.
+const RETURN_DAYS = 14;
+
 // One indexable URL per style + colorway: /collection/:lineId/:colorwayId.
 export default function Product() {
   const { lineId, colorwayId } = useParams();
@@ -46,6 +49,14 @@ export default function Product() {
           ? "https://schema.org/OutOfStock"
           : "https://schema.org/InStock",
         itemCondition: "https://schema.org/NewCondition",
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          applicableCountry: "US",
+          returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+          merchantReturnDays: RETURN_DAYS,
+          returnMethod: "https://schema.org/ReturnByMail",
+          returnFees: "https://schema.org/ReturnFeesCustomerResponsibility",
+        },
       },
     },
     {

@@ -23,8 +23,8 @@ const items = COLLECTION_LINES.flatMap((line) =>
     const fields = {
       "g:id": `${line.id}-${cw.id}`,
       "g:item_group_id": line.id,
-      "g:title": `${line.name} in ${cw.label}`,
-      "g:description": `${line.description} ${line.material}.`,
+      "g:title": `AANI ${line.name.replace(/^The /, "")} in ${cw.label} | Handmade ${line.subtitle} Clutch`,
+      "g:description": `${line.description} ${line.material}. Handmade AANI luxury Italian leather clutch in the ${cw.label} colorway.`,
       "g:link": `${SITE_URL}/collection/${line.id}/${cw.id}`,
       "g:image_link": absoluteUrl(cw.front),
       "g:additional_image_link": cw.back ? absoluteUrl(cw.back) : null,
