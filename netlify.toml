@@ -1,5 +1,10 @@
 [build]
-  command = "npm run build"
+  # Pages are prerendered in headless Chromium at build time (scripts/prerender.mjs),
+  # so the build installs a Chromium binary first. Cached between builds.
+  command = "npx playwright-core install chromium && npm run build"
+
+  [build.environment]
+    PLAYWRIGHT_BROWSERS_PATH = "/opt/build/cache/ms-playwright"
   publish = "dist"
 
 [functions]
