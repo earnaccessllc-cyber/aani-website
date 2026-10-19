@@ -15,11 +15,11 @@ const ORGANIZATION_JSON_LD = {
   logo: `${SITE_URL}/aani-logo.png`,
   description:
     "AANI is a luxury leather goods house making clutches and handbags by hand in premium Italian leather — from our signature woven Trellara styles to smooth, minimal silhouettes.",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "New York",
-    addressRegion: "NY",
-    addressCountry: "US",
+  email: "contact@aanimetier.com",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "contact@aanimetier.com",
+    contactType: "customer service",
   },
 };
 
@@ -40,6 +40,7 @@ export default function Home() {
         jsonLd={[ORGANIZATION_JSON_LD, WEBSITE_JSON_LD]}
       />
       <Navbar />
+      <h1 className="sr-only">AANI Italian Leather Clutches and Handbags</h1>
       <HeroSection />
       <BrandStory />
       <TextureShowcase />
