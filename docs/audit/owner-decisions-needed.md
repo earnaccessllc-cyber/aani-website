@@ -21,8 +21,8 @@ Note: "Italian leather" on a bag made elsewhere can be accurate if documented, b
 ## 2. Footer location "Manhattan, NY"
 The 19 Oct commit removed a New York address from the schema because it "does not match the business's actual location", but the footer still says Manhattan, NY. Keep it, change it, or remove it?
 
-## 3. Liscio description vs photos
-The copy says "oversized leather-covered dome button", but the photos show three button-flap pockets and a cut-out handle. Please supply the correct description.
+## 3. Liscio description vs photos: RESOLVED
+Owner decision (2026-10-20): keep the existing wording "oversized leather-covered dome button". No change.
 
 ## 4. Product details: NEEDS MERCHANT INPUT (both styles)
 Dimensions (in/cm), lining, closure, hardware, interior/pocket layout, carry options (handle, strap?), what fits, care instructions, and order processing time.
