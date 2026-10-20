@@ -9,7 +9,7 @@ export const COLLECTION_LINES = [
     subtitle: "Woven Leather",
     material: "Hand-woven calfskin, trellara technique",
     description:
-      "Constructed entirely by hand using the signature trellara weaving technique, each portfolio clutch requires between 48 and 72 hours of meticulous work by a single artisan. The supple calfskin strips are woven by hand, creating a structure that is simultaneously architectural and yielding.",
+      "Constructed entirely by hand using the signature trellara weaving technique, each portfolio clutch requires between 48 and 72 hours of meticulous handwork. The supple calfskin strips are woven by hand, creating a structure that is simultaneously architectural and yielding.",
     price: 1850,
     heroImage:
       "/images/products/9669d9ec3.webp",

@@ -14,8 +14,8 @@ const pillars = [
   },
   {
     number: "03",
-    title: "The Artisan's Time",
-    text: "Each piece carries the unbroken attention of a single artisan. We measure quality not in minutes saved, but in hours given — the quiet accumulation of care made tangible.",
+    title: "The Gift of Time",
+    text: "Each piece is made with unhurried attention, from first cut to final stitch. We measure quality not in minutes saved, but in hours given — the quiet accumulation of care made tangible.",
   },
 ];
 

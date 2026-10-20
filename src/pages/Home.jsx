@@ -35,7 +35,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <SEO
         title="AANI | Italian Leather Handbags & Clutches"
-        description="Minimal in form, bold in feeling. Italian leather clutches and handbags, each made by hand by a single artisan from first cut to final stitch."
+        description="Minimal in form, bold in feeling. Italian leather clutches and handbags, each made by hand in our atelier from first cut to final stitch."
         path="/"
         jsonLd={[ORGANIZATION_JSON_LD, WEBSITE_JSON_LD]}
       />
