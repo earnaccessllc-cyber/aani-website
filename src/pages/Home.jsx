@@ -40,7 +40,6 @@ export default function Home() {
         jsonLd={[ORGANIZATION_JSON_LD, WEBSITE_JSON_LD]}
       />
       <Navbar />
-      <h1 className="sr-only">AANI Italian Leather Clutches and Handbags</h1>
       <HeroSection />
       <BrandStory />
       <TextureShowcase />
