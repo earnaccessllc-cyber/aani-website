@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowLeft, ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCart } from "@/lib/cart";
 
-export default function LineDetail({ line, initialColorwayId, onBack, onColorwayChange }) {
+// Installments are a quarter of the price, so they can land on cents
+// ($1,850 / 4 = $462.50); always show two decimals then, never "$462.5".
+const formatInstallment = (price) =>
+  (price / 4).toLocaleString("en-US", {
+    minimumFractionDigits: price % 4 ? 2 : 0,
+    maximumFractionDigits: 2,
+  });
+
+export default function LineDetail({ line, initialColorwayId, onBack, onColorwayChange, returnDays }) {
   const [selectedColorway, setSelectedColorway] = useState(
     line.colorways.find(cw => cw.id === initialColorwayId) ||
     line.colorways.find(cw => cw.front === line.heroImage) ||
@@ -13,13 +22,19 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
   const [lightbox, setLightbox] = useState(false);
   const { addItem, buyNow, checkingOut, error: checkoutError } = useCart();
 
-  // Keep the page from scrolling underneath the enlarged photo.
+  // Keep the page from scrolling underneath the enlarged photo, and let
+  // Escape close it for keyboard users.
   useEffect(() => {
     if (!lightbox) return undefined;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") setLightbox(false);
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
     };
   }, [lightbox]);
 
@@ -62,8 +77,10 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
           {/* Left — image */}
           <div className="flex flex-col gap-4">
-            <div
-              className="relative aspect-[4/5] overflow-hidden cursor-zoom-in border border-black bg-black"
+            <button
+              type="button"
+              aria-label={`Enlarge photo: ${selectedColorway.label}, ${side} view`}
+              className="relative block w-full aspect-[4/5] overflow-hidden cursor-zoom-in border border-black bg-black"
               onClick={() => setLightbox(true)}
             >
               {/* Every photo for this style is mounted once and just faded in/out,
@@ -76,7 +93,7 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                     <img
                       key={`${cw.id}-${s}`}
                       src={src}
-                      alt={`${line.name} — ${cw.label} ${s}`}
+                      alt={`${line.name} in ${cw.label}, ${s} view`}
                       width={1024}
                       height={1024}
                       decoding="async"
@@ -89,13 +106,16 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                   );
                 })
               )}
-            </div>
+            </button>
 
             {/* Lightbox */}
             {/* Opens and closes instantly on a near-opaque backdrop. A fade let the
                 page photo show through at a different size, which looked like a glitch. */}
             {lightbox && (
                 <div
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={`${line.name} in ${selectedColorway.label}`}
                   className="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
                   onClick={() => setLightbox(false)}
                 >
@@ -115,7 +135,7 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                           <img
                             key={`lb-${cw.id}-${s}`}
                             src={src}
-                            alt={`${line.name} — ${cw.label} ${s}`}
+                            alt={`${line.name} in ${cw.label}, ${s} view`}
                             aria-hidden={!active}
                             onClick={() => setLightbox(false)}
                             className={`col-start-1 row-start-1 max-h-[95dvh] max-w-[95vw] object-contain cursor-zoom-out transition-opacity duration-300 ${
@@ -135,6 +155,7 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                     {["front", "back"].map((s) => (
                       <button
                         key={s}
+                        aria-pressed={side === s}
                         onClick={() => setSide(s)}
                         className={`font-sans text-xs tracking-widest uppercase px-5 py-2 border transition-colors ${
                           side === s
@@ -176,6 +197,7 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
               {["front", "back"].map((s) => (
                 <button
                   key={s}
+                  aria-pressed={side === s}
                   onClick={() => setSide(s)}
                   className={`font-sans text-xs tracking-widest uppercase px-5 py-2 border transition-colors ${
                     side === s
@@ -215,6 +237,8 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                     key={cw.id}
                     onClick={() => handleSwatchClick(cw)}
                     title={cw.label}
+                    aria-label={`${cw.label}${cw.soldOut ? " (sold out)" : ""}`}
+                    aria-pressed={selectedColorway.id === cw.id}
                     className={`w-6 h-6 rounded-full border-2 transition-all ${
                       selectedColorway.id === cw.id
                         ? "border-foreground scale-110"
@@ -262,17 +286,35 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
               {/* Klarna */}
               <button onClick={handleBuyNow} disabled={checkingOut} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
                 <span className="font-sans text-sm font-semibold text-foreground tracking-tight">Klarna</span>
-                <span className="font-sans text-xs text-muted-foreground group-hover:text-foreground transition-colors">4 × ${(line.price / 4).toLocaleString()} — interest-free</span>
+                <span className="font-sans text-xs text-muted-foreground group-hover:text-foreground transition-colors">4 × ${formatInstallment(line.price)} — interest-free</span>
               </button>
               {/* Afterpay */}
               <button onClick={handleBuyNow} disabled={checkingOut} className="flex items-center justify-between border border-border py-3 px-5 hover:border-foreground/40 transition-colors duration-300 w-full group disabled:opacity-60">
                 <span className="font-sans text-sm font-semibold text-foreground tracking-tight">Afterpay</span>
-                <span className="font-sans text-xs text-muted-foreground group-hover:text-foreground transition-colors">4 × ${(line.price / 4).toLocaleString()} — interest-free</span>
+                <span className="font-sans text-xs text-muted-foreground group-hover:text-foreground transition-colors">4 × ${formatInstallment(line.price)} — interest-free</span>
               </button>
               {checkoutError && <p role="alert" className="font-sans text-xs text-destructive mt-1">{checkoutError}</p>}
             </div>
             </>
             )}
+
+            {/* Policies, next to the purchase controls. Only links to what the
+                Returns page already states; shipping terms are not published yet. */}
+            <div className="mt-8 pt-6 border-t border-border max-w-xs space-y-2">
+              <Link
+                to="/returns"
+                className="block font-sans text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {returnDays ? `Returns accepted within ${returnDays} days of delivery` : "Returns & refunds"}
+                <span className="underline underline-offset-4 ml-1">Details</span>
+              </Link>
+              <a
+                href="mailto:contact@aanimetier.com"
+                className="block font-sans text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Questions? <span className="underline underline-offset-4">contact@aanimetier.com</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
