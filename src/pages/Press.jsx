@@ -21,6 +21,7 @@ function priceRange() {
 
 const FACTS = [
   { label: "House", value: "AANI, an independent luxury leather goods house" },
+  { label: "Based in", value: "Manhattan, NY" },
   { label: "Creative Director", value: "Andrena" },
   { label: "Material", value: "Italian calfskin, naturally dyed" },
   { label: "Making", value: "Made by hand in our atelier, from first cut to final stitch" },
