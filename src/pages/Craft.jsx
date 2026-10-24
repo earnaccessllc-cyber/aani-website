@@ -16,7 +16,7 @@ export default function Craft() {
     <div className="min-h-screen bg-background">
       <SEO
         title="Métier"
-        description="Inside the making of an AANI bag: how a single artisan makes each piece by hand, from raw hide to finished object, with no assembly line."
+        description="Inside the making of an AANI bag: how each piece is made by hand, from raw hide to finished object, with no assembly line."
         path="/metier"
       />
       <Navbar />
@@ -34,10 +34,10 @@ export default function Craft() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-start mb-24">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-6">
             <motion.h2 variants={fadeUp} custom={0} className="font-serif text-3xl md:text-4xl font-light leading-tight mb-6">
-              Each piece, one pair<br /><span className="italic">of hands</span>
+              Each piece, made<br /><span className="italic">by hand</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="font-sans text-sm leading-relaxed text-muted-foreground">
-              In our atelier, every bag passes through the hands of a single artisan from the first cut to the final stitch. No assembly line. No division of labor. Just one artisan's unbroken attention — from raw hide to finished object.
+              In our atelier, every bag is made by hand from the first cut to the final stitch. No assembly line. No shortcuts. Just unhurried, careful work — from raw hide to finished object.
             </motion.p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-6">

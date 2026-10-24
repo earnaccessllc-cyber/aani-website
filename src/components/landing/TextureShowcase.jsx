@@ -12,7 +12,7 @@ const details = [
 {
   label: "Technique",
   value: "Hand-Woven Trellara",
-  desc: "Each strip interlaced by a single artisan over 48 to 72 hours, depending on the style"
+  desc: "Each strip interlaced by hand over 48 to 72 hours, depending on the style"
 },
 {
   label: "Finish",

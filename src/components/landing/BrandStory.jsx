@@ -64,7 +64,7 @@ export default function BrandStory() {
             <div className="absolute inset-0 bg-foreground/5" />
           </div>
           <p className="font-sans text-xs text-muted-foreground mt-4 tracking-wide text-center">
-            One artisan, one weave — from the first strand to the last.
+            Woven by hand — from the first strand to the last.
           </p>
         </motion.div>
 

@@ -102,7 +102,7 @@ Deno.serve(async (req) => {
       </p>
     </div>
     <div class="footer">
-      <p>AANI &mdash; Handcrafted in Italy &mdash; Spring 2026</p>
+      <p>AANI &mdash; Spring 2026</p>
     </div>
   </div>
 </body>

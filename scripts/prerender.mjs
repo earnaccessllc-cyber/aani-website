@@ -20,6 +20,7 @@ const STATIC_ROUTES = [
   "/metier",
   "/atelier",
   "/stockists",
+  "/press",
   "/returns",
 ];
 const PRODUCT_ROUTES = COLLECTION_LINES.flatMap((line) =>

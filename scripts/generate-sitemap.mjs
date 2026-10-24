@@ -12,6 +12,7 @@ const STATIC_PAGES = [
   { path: "/metier", changefreq: "monthly", priority: "0.6" },
   { path: "/atelier", changefreq: "monthly", priority: "0.6" },
   { path: "/stockists", changefreq: "monthly", priority: "0.5" },
+  { path: "/press", changefreq: "monthly", priority: "0.5" },
   { path: "/returns", changefreq: "yearly", priority: "0.3" },
 ];
 
