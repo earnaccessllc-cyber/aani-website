@@ -5,11 +5,19 @@ import Footer from "@/components/landing/Footer";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import SEO from "@/components/SEO";
+import { COLLECTION_LINES } from "@/lib/collectionData";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.8, delay: i * 0.15, ease: "easeOut" } }),
 };
+
+function priceRange() {
+  const prices = COLLECTION_LINES.map((l) => l.price);
+  const fmt = (n) => `USD ${n.toLocaleString("en-US")}`;
+  const lo = Math.min(...prices), hi = Math.max(...prices);
+  return lo === hi ? fmt(lo) : `${fmt(lo)} – ${fmt(hi)}`;
+}
 
 const FACTS = [
   { label: "House", value: "AANI, an independent luxury leather goods house" },
@@ -18,7 +26,7 @@ const FACTS = [
   { label: "Making", value: "Made by hand in our atelier, from first cut to final stitch" },
   { label: "Styles", value: "The Trellara Portfolio Clutch (hand-woven) and The Liscio Clutch (smooth full-grain)" },
   { label: "Colorways", value: "Noir, Espresso, Cognac, Emerald, Stone" },
-  { label: "Price", value: "USD 1,850" },
+  { label: "Price", value: priceRange() },
   { label: "Availability", value: "Limited monthly runs, sold directly at aanimetier.com" },
 ];
 
