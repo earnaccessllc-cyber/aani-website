@@ -13,7 +13,6 @@ const fadeUp = {
 
 const FACTS = [
   { label: "House", value: "AANI, an independent luxury leather goods house" },
-  { label: "Based in", value: "New York" },
   { label: "Creative Director", value: "Andrena" },
   { label: "Material", value: "Italian calfskin, naturally dyed" },
   { label: "Making", value: "Made by hand in our atelier, from first cut to final stitch" },
@@ -58,7 +57,7 @@ export default function Press() {
             About <span className="italic">AANI</span>
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} className="font-sans text-sm leading-relaxed text-muted-foreground mb-6">
-            AANI is an independent New York luxury leather goods house making clutches by hand from Italian calfskin. Each piece begins with a simple silhouette, then turns up the volume through exaggerated shape and bold proportion — minimal in form, bold in feeling.
+            AANI is an independent luxury leather goods house making clutches by hand from Italian calfskin. Each piece begins with a simple silhouette, then turns up the volume through exaggerated shape and bold proportion — minimal in form, bold in feeling.
           </motion.p>
           <motion.p variants={fadeUp} custom={2} className="font-sans text-sm leading-relaxed text-muted-foreground">
             The signature Trellara weave is cut and interlaced by hand, with a single piece taking 48 to 72 hours to weave. Pieces are released in strictly limited monthly runs.
