@@ -11,8 +11,8 @@ import { preview } from "vite";
 import { chromium } from "playwright-core";
 import { COLLECTION_LINES } from "../src/lib/collectionData.js";
 
-// Only canonical, indexable routes. /craft and /vision render the same page as
-// /metier and canonicalize to it, so they are not rendered separately.
+// Only canonical, indexable routes. /craft and /vision 301 to /metier
+// (netlify.toml), so they are not rendered separately.
 // /thank-you is noindex and is left out.
 const STATIC_ROUTES = [
   "/",
