@@ -10,7 +10,8 @@ import Footer from "../components/landing/Footer";
 const ORGANIZATION_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "AANI",
+  name: "AANI Métier",
+  alternateName: "AANI",
   url: SITE_URL,
   logo: `${SITE_URL}/aani-logo.png`,
   description:
