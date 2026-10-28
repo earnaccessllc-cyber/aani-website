@@ -1,17 +1,35 @@
-# AANI
+# AANI Métier
 
-> AANI is a luxury leather goods house making clutches by hand in premium Italian leather. Each piece is made by hand in the AANI atelier, from the first cut to the final stitch. Pieces are sold in a limited number of colorways, with the Trellara woven style and the smooth Liscio style.
+> AANI Métier (AANI) is a luxury leather goods house making clutches and handbags by hand in premium Italian leather, from the first cut to the final stitch. The collection includes the hand-woven Trellara Portfolio Clutch and the smooth full-grain Liscio Clutch, each in a limited number of colorways. Prices are in USD.
 
-## Shop
+## Main pages
 
-- [The Trellara Portfolio Clutch](https://aanimetier.com/collection/intrecciato/noir): hand-woven calfskin clutch, colorways Noir, Espresso, Cognac, Emerald and Stone
-- [The Liscio Clutch](https://aanimetier.com/collection/liscio/noir): smooth-leather clutch, colorways Noir, Espresso, Cognac, Emerald and Stone
-- [Full collection](https://aanimetier.com/collection)
+- [Home](https://aanimetier.com/): brand overview of AANI Métier and its handmade Italian leather clutches
+- [Full collection](https://aanimetier.com/collection): every style and colorway currently offered, with prices
+
+## Products: The Trellara Portfolio Clutch (hand-woven Italian calfskin)
+
+- [Trellara Portfolio Clutch in Noir](https://aanimetier.com/collection/intrecciato/noir): black hand-woven leather portfolio clutch
+- [Trellara Portfolio Clutch in Espresso](https://aanimetier.com/collection/intrecciato/espresso): dark brown hand-woven leather portfolio clutch
+- [Trellara Portfolio Clutch in Cognac](https://aanimetier.com/collection/intrecciato/cognac): tan hand-woven leather portfolio clutch
+- [Trellara Portfolio Clutch in Emerald](https://aanimetier.com/collection/intrecciato/emerald): green hand-woven leather portfolio clutch
+- [Trellara Portfolio Clutch in Stone](https://aanimetier.com/collection/intrecciato/stone): grey hand-woven leather portfolio clutch
+
+## Products: The Liscio Clutch (smooth full-grain Italian calfskin)
+
+- [Liscio Clutch in Noir](https://aanimetier.com/collection/liscio/noir): black smooth leather clutch with leather-covered dome button
+- [Liscio Clutch in Espresso](https://aanimetier.com/collection/liscio/espresso): dark brown smooth leather clutch
+- [Liscio Clutch in Cognac](https://aanimetier.com/collection/liscio/cognac): tan smooth leather clutch
+- [Liscio Clutch in Emerald](https://aanimetier.com/collection/liscio/emerald): green smooth leather clutch
+- [Liscio Clutch in Stone](https://aanimetier.com/collection/liscio/stone): grey smooth leather clutch
 
 ## About
 
-- [Métier: how the pieces are made](https://aanimetier.com/metier)
-- [Atelier](https://aanimetier.com/atelier)
-- [Stockists](https://aanimetier.com/stockists)
-- [Press](https://aanimetier.com/press): press kit, fact sheet, images, press@aanimetier.com
-- [Returns and refunds](https://aanimetier.com/returns): unused pieces in original condition may be returned within 14 days of delivery
+- [Métier](https://aanimetier.com/metier): how each piece is made by hand, materials and craft
+- [Atelier](https://aanimetier.com/atelier): the AANI Métier atelier and its makers
+- [Stockists](https://aanimetier.com/stockists): where to buy AANI Métier pieces
+- [Press](https://aanimetier.com/press): press kit, fact sheet, images; contact press@aanimetier.com
+
+## Policies
+
+- [Returns and refunds](https://aanimetier.com/returns): unused pieces in original condition may be returned within 14 days of delivery; return shipping is paid by the customer
