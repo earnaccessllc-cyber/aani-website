@@ -7,7 +7,7 @@ import Footer from "@/components/landing/Footer";
 import { useCollectionLines } from "@/lib/useCollectionLines";
 import SEO from "@/components/SEO";
 
-function ColorwayCard({ line, colorway, index }) {
+function ColorwayCard({ line, colorway, index, eager }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,7 +21,7 @@ function ColorwayCard({ line, colorway, index }) {
           src={colorway.front}
           alt={`${line.name} in ${colorway.label}`}
           className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
-          loading="eager"
+          loading={eager ? "eager" : "lazy"}
           decoding="async"
         />
       </div>
@@ -84,7 +84,7 @@ export default function Collection() {
 
         {/* One section per style, every colorway shown */}
         <div className="space-y-24">
-          {lines.map((line) => (
+          {lines.map((line, lineIndex) => (
             <section key={line.id}>
               <div className="flex items-end justify-between border-b border-border pb-4 mb-10">
                 <div>
@@ -100,6 +100,9 @@ export default function Collection() {
                     line={line}
                     colorway={colorway}
                     index={i}
+                    // Only the first style is in view on load; later rows wait
+                    // until the visitor scrolls toward them.
+                    eager={lineIndex === 0}
                   />
                 ))}
               </div>

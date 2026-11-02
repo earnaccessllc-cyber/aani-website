@@ -64,7 +64,11 @@ export default function Navbar() {
           <button
             onClick={() => openCart(true)}
             aria-label={`Open bag${count ? `, ${count} items` : ""}`}
-            className="relative text-white md:text-muted-foreground md:hover:text-foreground transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] md:drop-shadow-none"
+            className={`relative transition-colors md:text-muted-foreground md:hover:text-foreground md:drop-shadow-none ${
+              // White with a shadow only over the home hero film; on the light
+              // inner pages it disappeared against the background on phones.
+              isHome ? "text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]" : "text-foreground"
+            }`}
           >
             <ShoppingBag className="w-5 h-5" />
             {count > 0 && (
@@ -75,7 +79,11 @@ export default function Navbar() {
           </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              className={`md:hidden ${
+                isHome && !menuOpen ? "text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]" : "text-foreground"
+              }`}
             >
               {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

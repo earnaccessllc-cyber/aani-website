@@ -68,15 +68,21 @@
   to = "/index.html"
   status = 200
 
+# /craft and /vision are legacy paths for the Métier page. They used to serve
+# the same content as /metier, but were never prerendered, so crawlers without
+# JavaScript got the homepage shell under those URLs. Permanently redirect them
+# to the canonical page instead.
 [[redirects]]
   from = "/craft"
-  to = "/index.html"
-  status = 200
+  to = "/metier"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/vision"
-  to = "/index.html"
-  status = 200
+  to = "/metier"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/atelier"
