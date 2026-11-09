@@ -5,31 +5,31 @@
 ## Main pages
 
 - [Home](https://aanimetier.com/): brand overview of AANI Métier and its handmade Italian leather clutches
-- [Full collection](https://aanimetier.com/collection): every style and colorway currently offered, with prices
+- [Full collection](https://aanimetier.com/collection/): every style and colorway currently offered, with prices
 
 ## Products: The Trellara Portfolio Clutch (hand-woven Italian calfskin)
 
-- [Trellara Portfolio Clutch in Noir](https://aanimetier.com/collection/intrecciato/noir): black hand-woven leather portfolio clutch
-- [Trellara Portfolio Clutch in Espresso](https://aanimetier.com/collection/intrecciato/espresso): dark brown hand-woven leather portfolio clutch
-- [Trellara Portfolio Clutch in Cognac](https://aanimetier.com/collection/intrecciato/cognac): tan hand-woven leather portfolio clutch
-- [Trellara Portfolio Clutch in Emerald](https://aanimetier.com/collection/intrecciato/emerald): green hand-woven leather portfolio clutch
-- [Trellara Portfolio Clutch in Stone](https://aanimetier.com/collection/intrecciato/stone): grey hand-woven leather portfolio clutch
+- [Trellara Portfolio Clutch in Noir](https://aanimetier.com/collection/intrecciato/noir/): black hand-woven leather portfolio clutch
+- [Trellara Portfolio Clutch in Espresso](https://aanimetier.com/collection/intrecciato/espresso/): dark brown hand-woven leather portfolio clutch
+- [Trellara Portfolio Clutch in Cognac](https://aanimetier.com/collection/intrecciato/cognac/): tan hand-woven leather portfolio clutch
+- [Trellara Portfolio Clutch in Emerald](https://aanimetier.com/collection/intrecciato/emerald/): green hand-woven leather portfolio clutch
+- [Trellara Portfolio Clutch in Stone](https://aanimetier.com/collection/intrecciato/stone/): grey hand-woven leather portfolio clutch
 
 ## Products: The Liscio Clutch (smooth full-grain Italian calfskin)
 
-- [Liscio Clutch in Noir](https://aanimetier.com/collection/liscio/noir): black smooth leather clutch with leather-covered dome button
-- [Liscio Clutch in Espresso](https://aanimetier.com/collection/liscio/espresso): dark brown smooth leather clutch
-- [Liscio Clutch in Cognac](https://aanimetier.com/collection/liscio/cognac): tan smooth leather clutch
-- [Liscio Clutch in Emerald](https://aanimetier.com/collection/liscio/emerald): green smooth leather clutch
-- [Liscio Clutch in Stone](https://aanimetier.com/collection/liscio/stone): grey smooth leather clutch
+- [Liscio Clutch in Noir](https://aanimetier.com/collection/liscio/noir/): black smooth leather clutch with leather-covered dome button
+- [Liscio Clutch in Espresso](https://aanimetier.com/collection/liscio/espresso/): dark brown smooth leather clutch
+- [Liscio Clutch in Cognac](https://aanimetier.com/collection/liscio/cognac/): tan smooth leather clutch
+- [Liscio Clutch in Emerald](https://aanimetier.com/collection/liscio/emerald/): green smooth leather clutch
+- [Liscio Clutch in Stone](https://aanimetier.com/collection/liscio/stone/): grey smooth leather clutch
 
 ## About
 
-- [Métier](https://aanimetier.com/metier): how each piece is made by hand, materials and craft
-- [Atelier](https://aanimetier.com/atelier): the AANI Métier atelier and its makers
-- [Stockists](https://aanimetier.com/stockists): where to buy AANI Métier pieces
-- [Press](https://aanimetier.com/press): press kit, fact sheet, images; contact press@aanimetier.com
+- [Métier](https://aanimetier.com/metier/): how each piece is made by hand, materials and craft
+- [Atelier](https://aanimetier.com/atelier/): the AANI Métier atelier and its makers
+- [Stockists](https://aanimetier.com/stockists/): where to buy AANI Métier pieces
+- [Press](https://aanimetier.com/press/): press kit, fact sheet, images; contact press@aanimetier.com
 
 ## Policies
 
-- [Returns and refunds](https://aanimetier.com/returns): unused pieces in original condition may be returned within 14 days of delivery; return shipping is paid by the customer
+- [Returns and refunds](https://aanimetier.com/returns/): unused pieces in original condition may be returned within 14 days of delivery; return shipping is paid by the customer

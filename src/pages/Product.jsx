@@ -5,7 +5,7 @@ import Footer from "@/components/landing/Footer";
 import LineDetail from "@/components/collection/LineDetail";
 import { useCollectionLines } from "@/lib/useCollectionLines";
 import PageNotFound from "@/lib/PageNotFound";
-import SEO, { SITE_URL } from "@/components/SEO";
+import SEO, { SITE_URL, canonicalUrl } from "@/components/SEO";
 
 // Google needs absolute image URLs; catalog photos are site-relative paths.
 const absoluteUrl = (src) => (src.startsWith("/") ? `${SITE_URL}${src}` : src);
@@ -39,10 +39,10 @@ export default function Product() {
       material: "Italian leather",
       category: line.subtitle,
       brand: { "@type": "Brand", name: "AANI Métier" },
-      url: `${SITE_URL}${path}`,
+      url: canonicalUrl(path),
       offers: {
         "@type": "Offer",
-        url: `${SITE_URL}${path}`,
+        url: canonicalUrl(path),
         priceCurrency: "USD",
         price: line.price,
         availability: colorway.soldOut
@@ -63,9 +63,9 @@ export default function Product() {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-        { "@type": "ListItem", position: 2, name: "Collection", item: `${SITE_URL}/collection` },
-        { "@type": "ListItem", position: 3, name: title, item: `${SITE_URL}${path}` },
+        { "@type": "ListItem", position: 1, name: "Home", item: canonicalUrl("/") },
+        { "@type": "ListItem", position: 2, name: "Collection", item: canonicalUrl("/collection") },
+        { "@type": "ListItem", position: 3, name: title, item: canonicalUrl(path) },
       ],
     },
   ];
