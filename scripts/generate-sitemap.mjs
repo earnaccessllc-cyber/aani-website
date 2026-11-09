@@ -27,7 +27,7 @@ const productPages = COLLECTION_LINES.flatMap((line) =>
 const urls = [...STATIC_PAGES, ...productPages]
   .map(
     (p) => `  <url>
-    <loc>${SITE_URL}${p.path}</loc>
+    <loc>${SITE_URL}${p.path.endsWith("/") ? p.path : `${p.path}/`}</loc>
     <changefreq>${p.changefreq}</changefreq>
     <priority>${p.priority}</priority>
   </url>`,
