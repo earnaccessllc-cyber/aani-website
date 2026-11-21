@@ -26,7 +26,7 @@ const IMG_DIR = path.join(ROOT, "public/images/products");
 
 // Every new photo is placed on this one background so the whole collection matches.
 // Change it here to change it for all future bags.
-const BACKGROUND = "#ece7e0";
+const BACKGROUND = "#ebebeb";
 
 const [summaryPath, photosDir] = process.argv.slice(2);
 if (!summaryPath || !photosDir) {

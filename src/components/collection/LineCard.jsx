@@ -10,7 +10,7 @@ export default function LineCard({ line, index, onClick }) {
       className="group cursor-pointer"
       onClick={() => onClick(line)}
     >
-      <div className="relative aspect-[3/4] overflow-hidden mb-5 border border-black bg-[#ece7e0]">
+      <div className="relative aspect-[3/4] overflow-hidden mb-5 border border-black bg-[#ebebeb]">
         <img
           src={line.heroImage}
           alt={line.name}

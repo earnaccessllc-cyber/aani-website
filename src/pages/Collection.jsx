@@ -16,7 +16,7 @@ function ColorwayCard({ line, colorway, index }) {
       className="group"
     >
       <Link to={`/collection/${line.id}/${colorway.id}`} className="block">
-      <div className="relative aspect-[3/4] overflow-hidden mb-4 border border-black bg-[#ece7e0]">
+      <div className="relative aspect-[3/4] overflow-hidden mb-4 border border-black bg-[#ebebeb]">
         <img
           src={colorway.front}
           alt={`${line.name} in ${colorway.label}`}
