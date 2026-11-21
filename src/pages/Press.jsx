@@ -26,7 +26,7 @@ const FACTS = [
   { label: "Material", value: "Italian calfskin, naturally dyed" },
   { label: "Making", value: "Made by hand in our atelier, from first cut to final stitch" },
   { label: "Styles", value: "The Trellara Portfolio Clutch and The Trellara Flap Clutch (hand-woven), and The Liscio Clutch (smooth full-grain)" },
-  { label: "Colorways", value: "Noir, Espresso, Cognac, Emerald, Stone; Flap Clutch also in Vienna Fog, Cobalt Blue, Vienna Tan, Vienna Navy, Vienna Olive, Vienna Brown" },
+  { label: "Colorways", value: "Noir, Espresso, Cognac, Emerald, Stone; Flap Clutch also in Vienna Fog, Cobalt Blue, Vienna Tan, Vienna Navy, Vienna Olive, Vienna Brown, Vienna Black" },
   { label: "Price", value: priceRange() },
   { label: "Availability", value: "Limited monthly runs, sold directly at aanimetier.com" },
 ];
@@ -35,10 +35,10 @@ const IMAGES = [
   { src: "/atelier-clutch-wall.jpg", alt: "AANI clutches in the atelier" },
   { src: "/craft-leather-strips-v2.jpg", alt: "Italian calfskin strips prepared for the Trellara weave" },
   { src: "/woven-clutch-denim-v3.jpg", alt: "The AANI Trellara woven clutch" },
-  { src: "/images/products/c3d34a9e1.webp", alt: "The Trellara Portfolio Clutch in Noir" },
-  { src: "/images/products/93cf7b77e.webp", alt: "The Trellara Portfolio Clutch in Stone" },
-  { src: "/images/products/ddbd6b694.webp", alt: "The Liscio Clutch in Noir" },
-  { src: "/images/products/0b02fb579.webp", alt: "The Liscio Clutch in Stone" },
+  { src: "/images/products/95b24d5f6.webp", alt: "The Trellara Portfolio Clutch in Noir" },
+  { src: "/images/products/66eaadb6c.webp", alt: "The Trellara Portfolio Clutch in Stone" },
+  { src: "/images/products/216044cf5.webp", alt: "The Liscio Clutch in Noir" },
+  { src: "/images/products/1e6d26e8c.webp", alt: "The Liscio Clutch in Stone" },
 ];
 
 export default function Press() {
