@@ -91,16 +91,25 @@ export function CartProvider({ children }) {
   }, []);
 
   const value = useMemo(() => {
+    // Drop anything saved in a past visit that is no longer sold (e.g. a retired style).
+    const valid = items.filter((i) => {
+      try {
+        resolveCart([i]);
+        return true;
+      } catch {
+        return false;
+      }
+    });
     let resolved = [];
     try {
-      resolved = items.length ? resolveCart(items) : [];
+      resolved = valid.length ? resolveCart(valid) : [];
     } catch {
       resolved = [];
     }
     return {
-      items,
+      items: valid,
       resolved,
-      count: items.reduce((n, i) => n + i.qty, 0),
+      count: valid.reduce((n, i) => n + i.qty, 0),
       subtotal: cartSubtotal(resolved),
       open,
       setOpen,
@@ -109,7 +118,7 @@ export function CartProvider({ children }) {
       clear,
       checkingOut,
       error,
-      checkout: () => run(items),
+      checkout: () => run(valid),
       buyNow: (lineId, colorwayId) => run([{ lineId, colorwayId, qty: 1 }]),
     };
   }, [items, open, checkingOut, error, addItem, setQty, clear, run]);

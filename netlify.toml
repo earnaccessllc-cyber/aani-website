@@ -49,6 +49,16 @@
   status = 200
 
 [[redirects]]
+  from = "/collection/intrecciato/*"
+  to = "/collection/trellara-flap"
+  status = 301
+
+[[redirects]]
+  from = "/collection/liscio/*"
+  to = "/collection/trellara-flap"
+  status = 301
+
+[[redirects]]
   from = "/collection/*"
   to = "/index.html"
   status = 200
