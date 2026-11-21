@@ -39,7 +39,7 @@ export default function CartDrawer() {
                   <Link
                     to={`/collection/${line.id}/${colorway.id}`}
                     onClick={() => setOpen(false)}
-                    className="w-24 aspect-[4/5] shrink-0 bg-black border border-black overflow-hidden"
+                    className="w-24 aspect-[4/5] shrink-0 bg-[#ece7e0] border border-black overflow-hidden"
                   >
                     <img src={colorway.front} alt={`${line.name} in ${colorway.label}`} className="w-full h-full object-contain" />
                   </Link>
