@@ -7,7 +7,7 @@ import { useCart } from "@/lib/cart";
 const navLinks = [
   { label: "Collection", href: "/collection" },
   { label: "Métier", href: "/metier" },
-  { label: "Atelier", href: "/atelier" },
+  { label: "Stockist", href: "/stockists" },
 ];
 
 export default function Navbar() {
@@ -53,7 +53,9 @@ export default function Navbar() {
                 key={link.href}
                 to={link.href}
                 onClick={() => window.scrollTo(0, 0)}
-                className="font-sans text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+                className={`font-sans text-xs tracking-widest uppercase transition-colors duration-300 ${
+                  isHome ? "text-white/85 hover:text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]" : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 {link.label}
               </Link>
@@ -64,7 +66,9 @@ export default function Navbar() {
           <button
             onClick={() => openCart(true)}
             aria-label={`Open bag${count ? `, ${count} items` : ""}`}
-            className="relative text-white md:text-muted-foreground md:hover:text-foreground transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] md:drop-shadow-none"
+            className={`relative text-white transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] ${
+              isHome ? "" : "md:text-muted-foreground md:hover:text-foreground md:drop-shadow-none"
+            }`}
           >
             <ShoppingBag className="w-5 h-5" />
             {count > 0 && (
