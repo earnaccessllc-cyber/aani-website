@@ -26,7 +26,7 @@ export default function HeroSection() {
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-[62%_center] md:object-[60%_center]"
         />
-        <div className="md:hidden absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+        <div className="md:hidden absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-background/55 to-transparent" />
         <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
         <div className="hidden md:block absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/35 to-transparent" />
       </div>
