@@ -149,6 +149,12 @@ export const COLLECTION_LINES = [
         swatch: "#594f49",
         front: "/images/products/07e0b15dd.webp",
       },
+      {
+        id: "vienna-black",
+        label: "Vienna Black",
+        swatch: "#1c1c1e",
+        front: "/images/products/9ce31363d.webp",
+      },
     ],
   },
 ];
