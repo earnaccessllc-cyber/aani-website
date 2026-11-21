@@ -119,6 +119,7 @@ export const COLLECTION_LINES = [
         swatch: "#819298",
         front: "/images/products/e05146857.webp",
       back: "/images/products/adb4c986f.webp",
+      bottom: "/images/products/7a0ed2d82.webp",
       },
       {
         id: "cobalt-blue",
@@ -126,6 +127,7 @@ export const COLLECTION_LINES = [
         swatch: "#3e6696",
         front: "/images/products/c54196418.webp",
       back: "/images/products/f421f14a8.webp",
+      bottom: "/images/products/84ea8e166.webp",
       },
       {
         id: "vienna-tan",
@@ -133,6 +135,7 @@ export const COLLECTION_LINES = [
         swatch: "#844f34",
         front: "/images/products/44d543912.webp",
       back: "/images/products/e0969ea7d.webp",
+      bottom: "/images/products/b244acf87.webp",
       },
       {
         id: "vienna-navy",
@@ -140,6 +143,7 @@ export const COLLECTION_LINES = [
         swatch: "#34414c",
         front: "/images/products/eed01b200.webp",
       back: "/images/products/ade015231.webp",
+      bottom: "/images/products/8a44ad2b9.webp",
       },
       {
         id: "vienna-olive",
@@ -147,6 +151,7 @@ export const COLLECTION_LINES = [
         swatch: "#56594a",
         front: "/images/products/d886415c0.webp",
       back: "/images/products/2aa5090a1.webp",
+      bottom: "/images/products/996d62ad3.webp",
       },
       {
         id: "vienna-brown",
@@ -154,6 +159,7 @@ export const COLLECTION_LINES = [
         swatch: "#594f49",
         front: "/images/products/07e0b15dd.webp",
       back: "/images/products/799dcfa2c.webp",
+      bottom: "/images/products/25570071d.webp",
       },
       {
         id: "vienna-black",
