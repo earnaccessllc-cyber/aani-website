@@ -65,7 +65,7 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
           {/* Left — image */}
           <div className="flex flex-col gap-4">
             <div
-              className="relative aspect-[4/5] overflow-hidden cursor-zoom-in border border-black bg-[#ebebeb]"
+              className="relative aspect-[4/5] overflow-hidden cursor-zoom-in bg-[#ebebeb]"
               onClick={() => setLightbox(true)}
             >
               {/* Every photo for this style is mounted once and just faded in/out,
