@@ -161,6 +161,7 @@ export const COLLECTION_LINES = [
         swatch: "#1c1c1e",
         front: "/images/products/9ce31363d.webp",
       back: "/images/products/0b8b00c9f.webp",
+      bottom: "/images/products/030426e21.webp",
       },
     ],
   },
