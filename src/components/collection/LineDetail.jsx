@@ -11,6 +11,8 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
   );
   const [side, setSide] = useState("front");
   const [lightbox, setLightbox] = useState(false);
+  // Some styles have only a front photo; the Front/Back toggle then stays hidden.
+  const sides = line.colorways.some((cw) => cw.back) ? ["front", "back"] : ["front"];
   const { addItem, buyNow, checkingOut, error: checkoutError } = useCart();
 
   // Keep the page from scrolling underneath the enlarged photo.
@@ -69,8 +71,9 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
               {/* Every photo for this style is mounted once and just faded in/out,
                   so switching colors never waits on a download or flashes blank. */}
               {line.colorways.flatMap((cw) =>
-                ["front", "back"].map((s) => {
+                sides.map((s) => {
                   const src = cw[s];
+                  if (!src) return null;
                   const active = src === currentImage;
                   return (
                     <img
@@ -108,8 +111,9 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
                       so opening or switching never reloads or flashes. */}
                   <div className="grid place-items-center" onClick={e => e.stopPropagation()}>
                     {line.colorways.flatMap((cw) =>
-                      ["front", "back"].map((s) => {
+                      sides.map((s) => {
                         const src = cw[s];
+                  if (!src) return null;
                         const active = src === currentImage;
                         return (
                           <img
@@ -129,10 +133,10 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
 
                   {/* Front / Back buttons inside lightbox */}
                   <div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1"
+                    className={`absolute bottom-8 left-1/2 -translate-x-1/2 ${sides.length > 1 ? "flex" : "hidden"} items-center gap-1`}
                     onClick={e => e.stopPropagation()}
                   >
-                    {["front", "back"].map((s) => (
+                    {sides.map((s) => (
                       <button
                         key={s}
                         onClick={() => setSide(s)}
@@ -172,8 +176,8 @@ export default function LineDetail({ line, initialColorwayId, onBack, onColorway
             )}
 
             {/* Front / Back toggle */}
-            <div className="flex items-center gap-1 self-center">
-              {["front", "back"].map((s) => (
+            <div className={`${sides.length > 1 ? "flex" : "hidden"} items-center gap-1 self-center`}>
+              {sides.map((s) => (
                 <button
                   key={s}
                   onClick={() => setSide(s)}
