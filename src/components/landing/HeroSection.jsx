@@ -1,108 +1,34 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Volume2, VolumeX } from "lucide-react";
 
-// Self-hosted from /public. The source upload was HEVC in a QuickTime
-// container, which Chrome and Firefox refuse to decode; both files below are
-// H.264/AAC MP4 with the moov atom moved to the front (faststart) so playback
-// can begin before the whole file has downloaded.
-// Numbered because /public filenames aren't content-hashed the way Vite's
-// bundled assets are: they carry a week-long Cache-Control, so reusing a name
-// would leave returning visitors on the previous film. Bump the number when
-// the film is replaced.
-const HERO_VIDEO = "/hero-2.mp4";                // 1080x1342, ~4.4 MB
-const HERO_VIDEO_MOBILE = "/hero-2-mobile.mp4";  // 720x894, ~2.0 MB
-const HERO_POSTER = "/hero-2-poster.jpg";
-
-// Phones get the 720p cut — at that viewport it's indistinguishable and saves
-// ~2 MB. Resolved once on mount rather than via <source media="...">, whose
-// support for picking between video sources is inconsistent across browsers.
-const pickSource = () =>
-  typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches
-    ? HERO_VIDEO_MOBILE
-    : HERO_VIDEO;
+// Self-hosted from /public. /public filenames aren't content-hashed the way
+// Vite's bundled assets are, and they carry a week-long Cache-Control (see
+// netlify.toml), so the name is numbered: bump it when the photo is replaced
+// (and in index.html's preload) rather than reusing a name.
+const HERO_IMAGE = "/hero-3.jpg"; // 2576x1419, ~230 KB
 
 export default function HeroSection() {
-  const [muted, setMuted] = useState(true);
-  const [videoReady, setVideoReady] = useState(false);
-  const [videoSrc] = useState(pickSource);
-  const videoRef = useRef(null);
-
-  // Autoplay only survives if the element is muted at the moment play() is
-  // called, so set the property directly instead of trusting the JSX prop.
-  // If the browser still blocks it, videoReady stays false and the poster
-  // remains as a static hero rather than leaving an empty frame.
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = true;
-    const played = video.play();
-    if (played) played.catch(() => {});
-  }, []);
-
-  const toggleMute = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    const nowMuted = !muted;
-    video.muted = nowMuted;
-    setMuted(nowMuted);
-    // The click is a user gesture, so an unmuted play() is permitted here
-    // even if autoplay was previously blocked.
-    if (!nowMuted && video.paused) video.play().catch(() => {});
-  };
-
   return (
     <section
       className="relative min-h-screen flex flex-col md:flex-row md:items-center overflow-hidden"
       style={{ minHeight: "100svh" }}
     >
-      {/* The film is portrait (1080x1342), so neither axis can be filled without
-          throwing most of it away: stretched across a desktop viewport it loses
-          half its height to an extreme close-up, and cropped into a phone it
-          loses a third of its width. It therefore gets a shape close to its own
-          on both — a band across the top on mobile with the copy beneath it, and
-          the right half of the screen on desktop with the copy beside it. A half
-          viewport is ~0.8 wide-to-tall against the film's 0.805, so desktop
-          crops essentially nothing. On mobile the band is whatever height the
-          copy leaves rather than a fixed fraction, so the hero fits any phone
-          instead of running past the fold on short ones. */}
-      <div className="relative w-full flex-1 min-h-0 overflow-hidden md:absolute md:inset-y-0 md:left-1/2 md:right-0 md:w-auto md:flex-none">
-        {/* Poster frame: paints instantly and stays underneath, so the video
-            simply fades in on top of it with no transparent gap mid-fade. */}
+      {/* Landscape photo. Desktop: full-bleed behind the copy, with a dark
+          scrim on the left so the white text stays legible. Mobile: a band
+          across the top with the copy beneath it, as before. */}
+      <div className="relative w-full flex-1 min-h-0 overflow-hidden md:absolute md:inset-0 md:flex-none">
         <img
-          src={HERO_POSTER}
-          alt=""
+          src={HERO_IMAGE}
+          alt="AANI woven leather clutch"
           // React 18 only passes the lowercase attribute through to the DOM.
           // eslint-disable-next-line react/no-unknown-property
           fetchpriority="high"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-[62%_center] md:object-[60%_center]"
         />
-        <video
-          ref={videoRef}
-          src={videoSrc}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          onPlaying={() => setVideoReady(true)}
-          aria-label="AANI Métier campaign film"
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-          style={{ opacity: videoReady ? 1 : 0, pointerEvents: "none" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" style={{ top: "80px" }} />
-
-        {/* Inside the media box so it rides the film rather than a fixed offset
-            that only matched one band height. */}
-        <button
-          onClick={toggleMute}
-          className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm border border-foreground/20 text-foreground hover:bg-background/50 transition-all duration-300"
-          aria-label={muted ? "Unmute" : "Mute"}
-        >
-          {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-        </button>
+        <div className="md:hidden absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
+        <div className="hidden md:block absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/35 to-transparent" />
       </div>
 
       {/* Content */}
@@ -112,7 +38,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-4"
+            className="font-sans text-xs tracking-widest uppercase text-muted-foreground md:text-white/80 mb-4"
           >
             Capsule Collection — Autumn/Winter 2026
           </motion.p>
@@ -121,7 +47,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="font-serif text-4xl md:text-6xl lg:text-7xl font-light leading-none tracking-tight text-foreground"
+            className="font-serif text-4xl md:text-6xl lg:text-7xl font-light leading-none tracking-tight text-foreground md:text-white"
           >
             Where minimalism
             <br />
@@ -134,8 +60,8 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 1 }}
             className="mt-8 md:mt-12"
           >
-            <div className="w-12 h-px bg-primary mb-6" />
-            <p className="font-sans text-sm leading-relaxed text-muted-foreground max-w-sm">
+            <div className="w-12 h-px bg-primary md:bg-white/70 mb-6" />
+            <p className="font-sans text-sm leading-relaxed text-muted-foreground md:text-white/85 max-w-sm">
               Quiet in form, bold in feeling. Every AANI piece pairs clean, restrained lines
               with an unmistakable presence — refined enough to whisper, rich enough to be remembered.
             </p>
@@ -149,7 +75,7 @@ export default function HeroSection() {
           >
             <a
               href="/collection"
-              className="inline-flex items-center gap-3 font-sans text-xs tracking-widest uppercase text-foreground border-b border-foreground/30 pb-1 hover:border-foreground transition-colors duration-300"
+              className="inline-flex items-center gap-3 font-sans text-xs tracking-widest uppercase text-foreground md:text-white border-b border-foreground/30 md:border-white/50 pb-1 hover:border-foreground md:hover:border-white transition-colors duration-300"
             >
               Discover the Collection
               <span className="text-lg">→</span>
@@ -168,7 +94,7 @@ export default function HeroSection() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-foreground/30"
+          className="w-px h-8 bg-foreground/30 md:bg-white/50"
         />
       </motion.div>
     </section>
