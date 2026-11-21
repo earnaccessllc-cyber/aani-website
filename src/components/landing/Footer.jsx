@@ -9,9 +9,6 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-4">
             <img src="/aani-logo.png" alt="AANI" className="h-8 w-auto mb-4 dark:invert" />
-            <p className="font-sans text-sm text-muted-foreground leading-relaxed max-w-xs">
-              A study in texture, silence, and the enduring beauty of things made slowly, by hand.
-            </p>
           </div>
 
           {/* Links */}
@@ -46,7 +43,6 @@ export default function Footer() {
             </p>
             <div className="font-sans text-sm text-foreground/70">
               <p>AANI</p>
-              <p>Manhattan, NY</p>
               <a href="mailto:contact@aanimetier.com" className="hover:text-foreground transition-colors">contact@aanimetier.com</a>
             </div>
             <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mt-6 mb-4">
@@ -104,9 +100,6 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-sans text-xs text-muted-foreground/60">
             © 2026 AANI. All rights reserved.
-          </p>
-          <p className="font-sans text-xs text-muted-foreground/40 tracking-wider">
-            Made with intention
           </p>
         </div>
       </div>
