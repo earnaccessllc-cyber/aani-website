@@ -2,9 +2,8 @@ import React from "react";
 import SEO, { SITE_URL } from "../components/SEO";
 import Navbar from "../components/landing/Navbar";
 import HeroSection from "../components/landing/HeroSection";
-import BrandStory from "../components/landing/BrandStory";
-import TextureShowcase from "../components/landing/TextureShowcase";
-import Philosophy from "../components/landing/Philosophy";
+import ProductGrid from "../components/landing/ProductGrid";
+import ImageBreak from "../components/landing/ImageBreak";
 import Footer from "../components/landing/Footer";
 
 const ORGANIZATION_JSON_LD = {
@@ -43,9 +42,8 @@ export default function Home() {
       <Navbar />
       <h1 className="sr-only">AANI Italian Leather Clutches and Handbags</h1>
       <HeroSection />
-      <BrandStory />
-      <TextureShowcase />
-      <Philosophy />
+      <ProductGrid />
+      <ImageBreak />
       <Footer />
     </div>
   );

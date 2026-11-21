@@ -34,14 +34,6 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full shrink-0 pt-6 pb-10 md:pt-0 md:pb-0">
         <div className="max-w-xl md:w-1/2 md:pr-10">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-sans text-xs tracking-widest uppercase text-muted-foreground md:text-white/80 mb-4"
-          >
-            Capsule Collection — Autumn/Winter 2026
-          </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -55,19 +47,6 @@ export default function HeroSection() {
           </motion.h1>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="mt-8 md:mt-12"
-          >
-            <div className="w-12 h-px bg-primary md:bg-white/70 mb-6" />
-            <p className="font-sans text-sm leading-relaxed text-muted-foreground md:text-white/85 max-w-sm">
-              Quiet in form, bold in feeling. Every AANI piece pairs clean, restrained lines
-              with an unmistakable presence — refined enough to whisper, rich enough to be remembered.
-            </p>
-          </motion.div>
-
-          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.3 }}
@@ -77,7 +56,7 @@ export default function HeroSection() {
               href="/collection"
               className="inline-flex items-center gap-3 font-sans text-xs tracking-widest uppercase text-foreground md:text-white border-b border-foreground/30 md:border-white/50 pb-1 hover:border-foreground md:hover:border-white transition-colors duration-300"
             >
-              Discover the Collection
+              Discover
               <span className="text-lg">→</span>
             </a>
           </motion.div>
