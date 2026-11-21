@@ -26,7 +26,7 @@ const FACTS = [
   { label: "Material", value: "Italian calfskin, naturally dyed" },
   { label: "Making", value: "Made by hand in our atelier, from first cut to final stitch" },
   { label: "Styles", value: "The Trellara Portfolio Clutch and The Trellara Flap Clutch (hand-woven), and The Liscio Clutch (smooth full-grain)" },
-  { label: "Colorways", value: "Noir, Espresso, Cognac, Emerald, Stone; Flap Clutch also in Vienna Fog, Cobalt Blue, Vienna Tan, Vienna Navy, Vienna Olive, Vienna Brown, Vienna Black" },
+  { label: "Colorways", value: "Noir, Espresso, Cognac, Emerald, Stone; Flap Clutch also in Vienna Fog, Cobalt Blue, Vienna Tan, Vienna Navy, Vienna Olive, Vienna Brown, Vienna Black, Kelly Green" },
   { label: "Price", value: priceRange() },
   { label: "Availability", value: "Limited monthly runs, sold directly at aanimetier.com" },
 ];

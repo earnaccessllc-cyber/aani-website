@@ -169,6 +169,14 @@ export const COLLECTION_LINES = [
       back: "/images/products/0b8b00c9f.webp",
       bottom: "/images/products/030426e21.webp",
       },
+      {
+        id: "kelly-green",
+        label: "Kelly Green",
+        swatch: "#1e803e",
+        front: "/images/products/ef3760cfc.webp",
+        back: "/images/products/76a34201e.webp",
+        bottom: "/images/products/b2680f969.webp",
+      },
     ],
   },
 ];
