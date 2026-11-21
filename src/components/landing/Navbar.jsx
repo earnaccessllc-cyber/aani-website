@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingBag } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import { useCart } from "@/lib/cart";
 
 const navLinks = [
@@ -10,111 +9,79 @@ const navLinks = [
   { label: "Stockist", href: "/stockists" },
 ];
 
+// Editorial header: a thin announcement line, then a white bar with the
+// wordmark on the left, small uppercase links and the bag on the right.
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { pathname } = useLocation();
   const { count, setOpen: openCart } = useCart();
-  const isHome = pathname === "/";
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
-    <>
-      <motion.nav
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isHome ? "bg-transparent" : scrolled ? "bg-background/90 backdrop-blur-md border-b border-border/50" : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 md:h-20">
-          {/* Hidden rather than unmounted on the home page: this row is
-              justify-between, so dropping the mark would pull the nav links
-              over to the left. `invisible` also takes it out of the tab order
-              and the accessibility tree, so it isn't announced or focusable
-              where it can't be seen. Every other page keeps it. */}
-          <Link
-            to="/"
-            className={isHome ? "invisible" : ""}
-            aria-label="AANI home"
-          >
-            <img src="/aani-logo.png" alt="AANI" className="h-6 md:h-8 w-auto dark:invert" />
-          </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background">
+      <div className="h-8 flex items-center justify-center border-b border-border">
+        <p className="font-sans text-[10px] tracking-[0.12em] uppercase text-foreground">
+          Complimentary shipping on all US orders
+        </p>
+      </div>
 
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                onClick={() => window.scrollTo(0, 0)}
-                className={`font-sans text-xs tracking-widest uppercase transition-colors duration-300 ${
-                  isHome ? "text-white/85 hover:text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+      <nav className="max-w-[1600px] mx-auto px-5 md:px-10 flex items-center justify-between h-14 md:h-16">
+        <Link to="/" aria-label="AANI home" onClick={() => setMenuOpen(false)}>
+          <img src="/aani-logo.png" alt="AANI" className="h-5 md:h-6 w-auto" />
+        </Link>
 
-          <div className="flex items-center gap-5">
+        <div className="hidden md:flex items-center gap-10">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              onClick={() => window.scrollTo(0, 0)}
+              className="font-sans text-xs tracking-[0.03em] uppercase text-foreground hover:underline underline-offset-4"
+            >
+              {link.label}
+            </Link>
+          ))}
           <button
             onClick={() => openCart(true)}
             aria-label={`Open bag${count ? `, ${count} items` : ""}`}
-            className={`relative text-white transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] ${
-              isHome ? "" : "md:text-muted-foreground md:hover:text-foreground md:drop-shadow-none"
-            }`}
+            className="font-sans text-xs tracking-[0.03em] uppercase text-foreground hover:underline underline-offset-4"
           >
-            <ShoppingBag className="w-5 h-5" />
-            {count > 0 && (
-              <span className="absolute -top-2 -right-2 min-w-4 h-4 px-1 rounded-full bg-primary text-primary-foreground font-sans text-[10px] leading-4 text-center">
-                {count}
-              </span>
-            )}
+            Bag{count > 0 ? ` (${count})` : ""}
           </button>
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
-            >
-              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
         </div>
-      </motion.nav>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-background/98 backdrop-blur-lg flex flex-col items-center justify-center gap-8"
+        <div className="flex md:hidden items-center gap-5">
+          <button
+            onClick={() => openCart(true)}
+            aria-label={`Open bag${count ? `, ${count} items` : ""}`}
+            className="font-sans text-xs tracking-[0.03em] uppercase"
           >
-            {navLinks.map((link, i) => (
-              <motion.div
-                key={link.href}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Link
-                  to={link.href}
-                  onClick={() => { setMenuOpen(false); window.scrollTo(0, 0); }}
-                  className="font-serif text-3xl font-light tracking-wider text-foreground"
-                >
-                  {link.label}
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+            Bag{count > 0 ? ` (${count})` : ""}
+          </button>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </nav>
+
+      {menuOpen && (
+        <div className="md:hidden fixed inset-x-0 top-[5.5rem] bottom-0 bg-background px-5 pt-6 border-t border-border">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              onClick={() => {
+                setMenuOpen(false);
+                window.scrollTo(0, 0);
+              }}
+              className="flex items-center justify-between py-3 font-sans text-xs tracking-[0.03em] uppercase font-bold"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </header>
   );
 }

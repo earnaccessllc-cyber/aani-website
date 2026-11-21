@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 40 20% 97%;
-    --foreground: 40 10% 8%;
-    --card: 40 15% 95%;
-    --card-foreground: 40 10% 8%;
-    --popover: 40 20% 97%;
-    --popover-foreground: 40 10% 8%;
-    --primary: 152 28% 28%;
-    --primary-foreground: 40 20% 97%;
-    --secondary: 40 12% 90%;
-    --secondary-foreground: 40 10% 15%;
-    --muted: 40 10% 92%;
-    --muted-foreground: 40 8% 45%;
-    --accent: 152 20% 38%;
-    --accent-foreground: 40 20% 97%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 96%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 0%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 40 10% 85%;
-    --input: 40 10% 85%;
-    --ring: 152 28% 28%;
-    --chart-1: 152 28% 28%;
-    --chart-2: 40 30% 55%;
-    --chart-3: 20 15% 40%;
-    --chart-4: 152 87% 42%;
-    --chart-5: 41 20% 70%;
-    --radius: 0.25rem;
-    --font-serif: 'Cormorant Garamond', Georgia, serif;
-    --font-sans: 'Inter', system-ui, sans-serif;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 0%;
+    --chart-1: 0 0% 0%;
+    --chart-2: 0 0% 35%;
+    --chart-3: 0 0% 50%;
+    --chart-4: 0 0% 65%;
+    --chart-5: 0 0% 80%;
+    --radius: 0rem;
+    --font-serif: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   .dark {
@@ -69,6 +69,14 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Editorial grotesk: headings read as small, spaced, uppercase labels */
+  h1, h2, h3, .font-serif {
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 400;
   }
 }
 

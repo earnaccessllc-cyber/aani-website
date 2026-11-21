@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-4">
-            <img src="/aani-logo.png" alt="AANI" className="h-8 w-auto mb-4 dark:invert" />
+            <img src="/aani-logo.png" alt="AANI" className="h-6 w-auto mb-4" />
             <p className="font-sans text-sm text-muted-foreground leading-relaxed max-w-xs">
               A study in texture, silence, and the enduring beauty of things made slowly, by hand.
             </p>
@@ -16,7 +16,7 @@ export default function Footer() {
 
           {/* Links */}
           <div className="col-span-1 md:col-span-2 md:col-start-7">
-            <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-4">
+            <p className="font-sans text-[10px] tracking-[0.12em] uppercase text-foreground font-bold mb-4">
               Explore
             </p>
             <div className="space-y-3">
@@ -32,7 +32,7 @@ export default function Footer() {
                 key={label}
                 to={path}
                 onClick={() => window.scrollTo(0, 0)}
-                className="block font-sans text-sm text-foreground/70 hover:text-foreground transition-colors">
+                className="block font-sans text-xs tracking-[0.03em] uppercase text-foreground hover:underline underline-offset-4">
                   {label}
                 </Link>
               )}
@@ -41,21 +41,20 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="col-span-1 md:col-span-3 md:col-start-10">
-            <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-4">
+            <p className="font-sans text-[10px] tracking-[0.12em] uppercase text-foreground font-bold mb-4">
               Contact Us
             </p>
             <div className="font-sans text-sm text-foreground/70">
               <p>AANI</p>
-              <p>Manhattan, NY</p>
               <a href="mailto:contact@aanimetier.com" className="hover:text-foreground transition-colors">contact@aanimetier.com</a>
             </div>
-            <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mt-6 mb-4">
+            <p className="font-sans text-[10px] tracking-[0.12em] uppercase text-foreground font-bold mt-6 mb-4">
               Press Inquiries
             </p>
             <div className="font-sans text-sm text-foreground/70">
               <a href="mailto:press@aanimetier.com" className="hover:text-foreground transition-colors">press@aanimetier.com</a>
             </div>
-            <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mt-6 mb-4">
+            <p className="font-sans text-[10px] tracking-[0.12em] uppercase text-foreground font-bold mt-6 mb-4">
               Stockist Inquiries
             </p>
             <div className="font-sans text-sm text-foreground/70">
@@ -66,7 +65,7 @@ export default function Footer() {
 
         {/* Payment Methods */}
         <div className="mt-12 flex items-center gap-3 flex-wrap">
-          <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mr-2">We accept</p>
+          <p className="font-sans text-[10px] tracking-[0.12em] uppercase text-foreground font-bold mr-2">We accept</p>
           {/* Visa */}
           <div className="flex items-center justify-center px-3 py-1.5 border border-border/60 rounded bg-card/50 h-8 min-w-[48px]">
             <span className="font-sans font-bold text-sm tracking-tight" style={{ color: "#1A1F71" }}>VISA</span>

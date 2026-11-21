@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import { useCollectionLines } from "@/lib/useCollectionLines";
@@ -16,22 +15,18 @@ function ColorwayCard({ line, colorway, index }) {
       className="group"
     >
       <Link to={`/collection/${line.id}/${colorway.id}`} className="block">
-      <div className="relative aspect-[3/4] overflow-hidden mb-4 border border-black bg-black">
-        <img
-          src={colorway.front}
-          alt={`${line.name} in ${colorway.label}`}
-          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <h3 className="font-serif text-lg font-light text-foreground">{line.name}</h3>
-          <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mt-1">{colorway.label}</p>
+        <div className="relative aspect-square overflow-hidden mb-3 bg-[#f2f2f2]">
+          <img
+            src={colorway.front}
+            alt={`${line.name} in ${colorway.label}`}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            loading="eager"
+            decoding="async"
+          />
         </div>
-        <p className="font-sans text-sm text-foreground mb-0.5">${line.price.toLocaleString()}</p>
-      </div>
+        <h3 className="font-sans text-xs tracking-[0.03em] uppercase text-foreground">{line.name}</h3>
+        <p className="font-sans text-xs tracking-[0.03em] uppercase text-muted-foreground mt-0.5">{colorway.label}</p>
+        <p className="font-sans text-xs text-foreground mt-2">${line.price.toLocaleString()}</p>
       </Link>
     </motion.div>
   );
@@ -59,41 +54,33 @@ export default function Collection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="pt-28 pb-20 max-w-7xl mx-auto px-6 md:px-12"
+        className="pt-36 md:pt-40 pb-20 max-w-[1600px] mx-auto px-5 md:px-10"
       >
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-16"
-        >
+        <div className="mb-10 md:mb-14 flex items-end justify-between">
+          <div>
+            <p className="font-sans text-[10px] tracking-[0.12em] uppercase text-muted-foreground mb-2">
+              Autumn/Winter 2026
+            </p>
+            <h1 className="font-sans text-sm md:text-base tracking-[0.04em] font-bold">Collection</h1>
+          </div>
           <Link
             to="/"
-            className="inline-flex items-center gap-2 font-sans text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors mb-8"
+            className="font-sans text-xs tracking-[0.03em] uppercase text-foreground hover:underline underline-offset-4"
           >
-            <ArrowLeft className="w-3 h-3" /> Back
+            Back
           </Link>
-          <p className="font-sans text-xs tracking-widest uppercase text-primary mb-3">
-            Autumn/Winter 2026
-          </p>
-          <h1 className="font-serif text-5xl md:text-6xl font-light leading-none">
-            Collection
-          </h1>
-        </motion.div>
+        </div>
 
         {/* One section per style, every colorway shown */}
-        <div className="space-y-24">
+        <div className="space-y-20">
           {lines.map((line) => (
             <section key={line.id}>
-              <div className="flex items-end justify-between border-b border-border pb-4 mb-10">
-                <div>
-                  <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-1">{line.subtitle}</p>
-                  <h2 className="font-serif text-3xl font-light text-foreground">{line.name}</h2>
-                </div>
-                <p className="font-sans text-xs text-muted-foreground">{line.colorways.length} colors</p>
+              <div className="flex items-baseline justify-between pb-3 mb-6 border-b border-border">
+                <h2 className="font-sans text-xs tracking-[0.03em] font-bold">{line.name}</h2>
+                <p className="font-sans text-xs text-muted-foreground uppercase tracking-[0.03em]">{line.colorways.length} colors</p>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-10 md:gap-x-4">
                 {line.colorways.map((colorway, i) => (
                   <ColorwayCard
                     key={colorway.id}

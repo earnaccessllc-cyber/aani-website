@@ -10,11 +10,11 @@ export default function LineCard({ line, index, onClick }) {
       className="group cursor-pointer"
       onClick={() => onClick(line)}
     >
-      <div className="relative aspect-[3/4] overflow-hidden mb-5 border border-black bg-black">
+      <div className="relative aspect-square overflow-hidden mb-3 bg-[#f2f2f2]">
         <img
           src={line.heroImage}
           alt={line.name}
-          className="w-full h-full object-contain transition-transform duration-700"
+          className="w-full h-full object-cover transition-transform duration-700"
           style={{ transform: "scale(1)", transition: "transform 700ms ease" }}
           onMouseEnter={e => e.currentTarget.style.transform = "scale(1.03)"}
           onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
@@ -24,22 +24,9 @@ export default function LineCard({ line, index, onClick }) {
         <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500" />
       </div>
 
-      <div className="flex items-end justify-between">
-        <div>
-          <p className="font-sans text-xs tracking-widest uppercase text-muted-foreground mb-1">
-            {line.subtitle}
-          </p>
-          <h3 className="font-serif text-xl font-light text-foreground">
-            {line.name}
-          </h3>
-          <p className="font-sans text-xs text-muted-foreground mt-1">
-            {line.colorways.length} colorways
-          </p>
-        </div>
-        <p className="font-sans text-sm text-foreground mb-0.5">
-          ${line.price.toLocaleString()}
-        </p>
-      </div>
+      <h3 className="font-sans text-xs tracking-[0.03em] uppercase text-foreground">{line.name}</h3>
+      <p className="font-sans text-xs tracking-[0.03em] uppercase text-muted-foreground mt-0.5">{line.colorways.length} colorways</p>
+      <p className="font-sans text-xs text-foreground mt-2">${line.price.toLocaleString()}</p>
     </motion.div>
   );
 }
