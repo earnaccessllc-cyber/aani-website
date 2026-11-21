@@ -35,10 +35,10 @@ const IMAGES = [
   { src: "/atelier-clutch-wall.jpg", alt: "AANI clutches in the atelier" },
   { src: "/craft-leather-strips-v2.jpg", alt: "Italian calfskin strips prepared for the Trellara weave" },
   { src: "/woven-clutch-denim-v3.jpg", alt: "The AANI Trellara woven clutch" },
-  { src: "/images/products/fb72d4114.webp", alt: "The Trellara Portfolio Clutch in Noir" },
-  { src: "/images/products/d82a35349.webp", alt: "The Trellara Portfolio Clutch in Stone" },
-  { src: "/images/products/a8d1751e5.webp", alt: "The Liscio Clutch in Noir" },
-  { src: "/images/products/8a0332b03.webp", alt: "The Liscio Clutch in Stone" },
+  { src: "/images/products/9764fe941.webp", alt: "The Trellara Portfolio Clutch in Noir" },
+  { src: "/images/products/3d35b6cfc.webp", alt: "The Trellara Portfolio Clutch in Stone" },
+  { src: "/images/products/c952e86b3.webp", alt: "The Liscio Clutch in Noir" },
+  { src: "/images/products/a344d5d6f.webp", alt: "The Liscio Clutch in Stone" },
 ];
 
 export default function Press() {
