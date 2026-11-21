@@ -5,8 +5,10 @@ import { useCollectionLines } from "@/lib/useCollectionLines";
 // Image-led grid, no copy beyond name, color and price.
 export default function ProductGrid() {
   const lines = useCollectionLines();
-  // One featured tile per style; the full range lives on /collection.
-  const tiles = lines.map((line) => ({ line, colorway: line.colorways.find((cw) => cw.front === line.heroImage) || line.colorways[0] }));
+  const FEATURED = { intrecciato: "espresso" }; // colorway shown on the home page, by style
+
+// One featured tile per style; the full range lives on /collection.
+  const tiles = lines.map((line) => ({ line, colorway: line.colorways.find((cw) => cw.id === FEATURED[line.id]) || line.colorways.find((cw) => cw.front === line.heroImage) || line.colorways[0] }));
   return (
     <section id="collection" className="pt-16 md:pt-24">
       <div className="px-6 md:px-12 mb-6 flex items-baseline justify-between font-sans text-xs tracking-widest uppercase">
