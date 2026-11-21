@@ -60,7 +60,7 @@ export const COLLECTION_LINES = [
     material: "Full-grain smooth calfskin",
     description:
       "The Liscio presents the purest expression of the leather itself — full-grain calfskin selected for its natural grain and hand-finished to a subtle burnished luster. Its clean lines and oversized leather-covered dome button allow the material to speak without interruption.",
-    price: 298,
+    price: 248,
     heroImage:
       "/images/products/ddbd6b694.webp",
     colorways: [
