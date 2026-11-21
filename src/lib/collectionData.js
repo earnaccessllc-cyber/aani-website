@@ -118,7 +118,7 @@ export const COLLECTION_LINES = [
         label: "Vienna Fog",
         swatch: "#819298",
         front: "/images/products/e05146857.webp",
-      back: "/images/products/adb4c986f.webp",
+      back: "/images/products/19de5031c.webp",
       bottom: "/images/products/7a0ed2d82.webp",
       },
       {
@@ -126,7 +126,7 @@ export const COLLECTION_LINES = [
         label: "Cobalt Blue",
         swatch: "#3e6696",
         front: "/images/products/c54196418.webp",
-      back: "/images/products/f421f14a8.webp",
+      back: "/images/products/f21aa5c7c.webp",
       bottom: "/images/products/84ea8e166.webp",
       },
       {
@@ -150,7 +150,7 @@ export const COLLECTION_LINES = [
         label: "Vienna Olive",
         swatch: "#56594a",
         front: "/images/products/d886415c0.webp",
-      back: "/images/products/2aa5090a1.webp",
+      back: "/images/products/7048b9bf3.webp",
       bottom: "/images/products/996d62ad3.webp",
       },
       {
@@ -158,7 +158,7 @@ export const COLLECTION_LINES = [
         label: "Vienna Brown",
         swatch: "#594f49",
         front: "/images/products/07e0b15dd.webp",
-      back: "/images/products/799dcfa2c.webp",
+      back: "/images/products/5af49f1db.webp",
       bottom: "/images/products/25570071d.webp",
       },
       {
