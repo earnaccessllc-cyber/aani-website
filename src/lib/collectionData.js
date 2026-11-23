@@ -46,9 +46,8 @@ export const COLLECTION_LINES = [
       {
         id: "stone",
         label: "Stone",
-        swatch: "#a09b93",
-        front: "/images/products/66eaadb6c.webp",
-        back:  "/images/products/528e27e9e.webp",
+        swatch: "#5c6e7c",
+        front: "/images/products/a7c3e91f4.webp",
       },
     ],
   },
