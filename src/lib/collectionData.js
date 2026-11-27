@@ -53,6 +53,7 @@ export const COLLECTION_LINES = [
         label: "Cobalt Blue",
         swatch: "#174789",
         front: "/images/products/f8a25d1c7.webp",
+        back:  "/images/products/a93b6e2d5.webp",
       },
     ],
   },
