@@ -13,7 +13,7 @@ export const COLLECTION_LINES = [
       "Constructed entirely by hand using the signature trellara weaving technique, each portfolio clutch requires between 48 and 72 hours of meticulous handwork. The supple calfskin strips are woven by hand, creating a structure that is simultaneously architectural and yielding.",
     price: 298,
     heroImage:
-      "/images/products/b41d7e6a2.webp",
+      "/images/products/d6e03a8f1.webp",
     colorways: [
       {
         id: "noir",
@@ -40,13 +40,13 @@ export const COLLECTION_LINES = [
         id: "emerald",
         label: "Emerald",
         swatch: "#3f7a45",
-        front: "/images/products/b41d7e6a2.webp",
+        front: "/images/products/d6e03a8f1.webp",
       },
       {
         id: "stone",
         label: "Stone",
         swatch: "#5c6e7c",
-        front: "/images/products/a7c3e91f4.webp",
+        front: "/images/products/c5d92b7e8.webp",
       },
     ],
   },
