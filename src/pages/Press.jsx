@@ -35,7 +35,7 @@ const IMAGES = [
   { src: "/craft-leather-strips-v2.jpg", alt: "Italian calfskin strips prepared for the Trellara weave" },
   { src: "/woven-clutch-denim-v3.jpg", alt: "The AANI Trellara woven clutch" },
   { src: "/images/products/95b24d5f6.webp", alt: "The Trellara Portfolio Clutch in Noir" },
-  { src: "/images/products/66eaadb6c.webp", alt: "The Trellara Portfolio Clutch in Stone" },
+  { src: "/images/products/a7c3e91f4.webp", alt: "The Trellara Portfolio Clutch in Stone" },
   { src: "/images/products/216044cf5.webp", alt: "The Liscio Clutch in Noir" },
   { src: "/images/products/1e6d26e8c.webp", alt: "The Liscio Clutch in Stone" },
 ];
